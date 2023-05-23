@@ -21,11 +21,13 @@ id favorite
 id imageView
 id information
 id pager
+id tabbar
 id toolbar
 id tv
 layout activity_clock
 layout activity_main
 layout fragment_click
+layout fragment_tab
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name
