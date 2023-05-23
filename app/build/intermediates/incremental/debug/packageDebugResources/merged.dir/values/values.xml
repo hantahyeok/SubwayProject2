@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <color name="black">#FF000000</color>
+    <color name="brand">#2962FF</color>
+    <color name="brand2">#AEDCD6</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">Subway</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <style name="Base.Theme.Subway" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+
+    <item name="android:statusBarColor" ns1:targetApi="l">@color/brand</item>
+
+    </style>
+    <style name="Theme.Subway" parent="Base.Theme.Subway"/>
+</resources>

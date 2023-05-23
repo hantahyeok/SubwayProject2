@@ -1,0 +1,36 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color brand
+color brand2
+color white
+drawable ballot
+drawable baseline_arrow_back_24
+drawable exit
+drawable home
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+drawable star
+drawable subwayway
+font font
+id click
+id clickFragment
+id clock
+id exit
+id favorite
+id imageView
+id information
+id pager
+id toolbar
+id tv
+layout activity_clock
+layout activity_main
+layout fragment_click
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+string hello_blank_fragment
+style Base.Theme.Subway
+style Theme.Subway
+xml backup_rules
+xml data_extraction_rules
