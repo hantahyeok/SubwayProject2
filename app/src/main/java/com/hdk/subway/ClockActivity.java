@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.location.Address;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -14,19 +15,25 @@ import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.gson.Gson;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClockActivity extends AppCompatActivity {
 
     TextView tv;
-    String result;
-
+    SubwayData SubwayData;
+    ArrayList<String> arraylist = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,33 +59,32 @@ public class ClockActivity extends AppCompatActivity {
     }
 
     void stationNum(String stationName){
-        String apiKey = "50794a697674616839374849626e77";
-        String serverUrl = "http://openapi.seoul.go.kr:8088/" +
-                apiKey + "/json/" + "SearchSTNBySubwayLineInfo/1/5/%20/" + stationName;
 
-        try{
-            URL url = new URL(serverUrl);
+        new Thread(){
+            @Override
+            public void run() {
 
-            InputStream is = url.openStream();
-            InputStreamReader isr = new InputStreamReader(is);
+                String apiKey = "50794a697674616839374849626e77";
+                String serverUrl = "http://openapi.seoul.go.kr:8088/" +
+                        apiKey + "/json/" + "SearchSTNBySubwayLineInfo/1/5/%20/" + stationName;
 
-            BufferedReader reader = new BufferedReader(isr);
+                try {
+                    URL url = new URL(serverUrl);
+                    InputStream is = url.openStream();
+                    InputStreamReader isr = new InputStreamReader(is);
 
-            StringBuffer buffer = new StringBuffer();
-            String line = reader.readLine();
-            while (line != null){
-                buffer.append(line + "\n");
-                line = reader.readLine();
+                    Gson gson = new Gson();
+                    SubwayData = gson.fromJson(isr, SubwayData.class);
+
+
+
+                } catch (MalformedURLException e) {
+                    throw new RuntimeException(e);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
-
-            String jsonData = buffer.toString();
-
-            Toast.makeText(this, "jasonData", Toast.LENGTH_SHORT).show();
-
-
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+        }.start();
 
 
     }

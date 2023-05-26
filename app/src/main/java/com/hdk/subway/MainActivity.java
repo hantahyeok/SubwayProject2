@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
                                 Toast.makeText(MainActivity.this, targetStation, Toast.LENGTH_SHORT).show();
                             } // send Station Name (column 1)
+
                         } while (c.moveToNext());
 
                     }

@@ -1,9 +1,32 @@
 package com.hdk.subway;
 
+import java.util.ArrayList;
+
 public class SubwayData {
 
+    SearchSTNBySubwayLineInfo SearchSTNBySubwayLineInfo;
+
+    public SubwayData(SearchSTNBySubwayLineInfo SearchSTNBySubwayLineInfo){
+        this.SearchSTNBySubwayLineInfo = SearchSTNBySubwayLineInfo;
+    }
+
 }
-//data class StationLineNum(var SearchSTNBySubwayLineInfo : First)
-//data class First(var row : List<Row>)
-//data class Row(var LINE_NUM : String , var STATION_NM: String)
-// LINE NUM = 호선 , STATION NM = 역
+
+class SearchSTNBySubwayLineInfo{
+
+    ArrayList<Station> row = new ArrayList<Station>();
+
+    public SearchSTNBySubwayLineInfo(ArrayList<Station> row){
+        this.row = row;
+    }
+}
+
+class Station{
+
+    String LINE_NUM;
+
+    public Station(String LINE_NUM){
+        this.LINE_NUM = LINE_NUM;
+    }
+
+}
