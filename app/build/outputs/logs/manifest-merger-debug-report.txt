@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:2:1-29:12
-INJECTED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:2:1-29:12
-INJECTED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:2:1-29:12
-INJECTED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:2:1-29:12
+ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:2:1-34:12
+INJECTED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:2:1-34:12
+INJECTED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:2:1-34:12
+INJECTED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:2:1-34:12
 MERGED from [com.davemorrissey.labs:subsampling-scale-image-view:3.10.0] /Users/handahyeog/.gradle/caches/transforms-3/922f2cae30fa668b9c375ba9a0315190/transformed/subsampling-scale-image-view-3.10.0/AndroidManifest.xml:2:1-11:12
 MERGED from [com.google.android.material:material:1.5.0] /Users/handahyeog/.gradle/caches/transforms-3/09b5b990793e4e84992dd5b078e94dd9/transformed/material-1.5.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/handahyeog/.gradle/caches/transforms-3/d3b64a44981f6730d3dc38c232befd32/transformed/constraintlayout-2.1.4/AndroidManifest.xml:2:1-11:12
@@ -46,27 +46,39 @@ MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/handahyeog/.gradle
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/handahyeog/.gradle/caches/transforms-3/5ec38c558705e4d51c1cd1644e7b9481/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] /Users/handahyeog/.gradle/caches/transforms-3/ef41ad1de6652bdfc935f1f371e39b47/transformed/print-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.3.0] /Users/handahyeog/.gradle/caches/transforms-3/20a644b62baf785bb02e4625e75762e3/transformed/annotation-experimental-1.3.0/AndroidManifest.xml:17:1-22:12
-INJECTED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:2:1-29:12
-INJECTED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:2:1-29:12
-INJECTED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:2:1-29:12
+INJECTED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:2:1-34:12
+INJECTED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:2:1-34:12
+INJECTED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:2:1-34:12
 	package
 		INJECTED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml
-		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:2:1-29:12
+		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:2:1-34:12
 		INJECTED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml
-		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:2:1-29:12
+		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:2:1-34:12
 		INJECTED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml
 	xmlns:tools
 		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml
-		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:2:1-29:12
+		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:2:1-34:12
 		INJECTED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:5:5-67
+	android:name
+		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:5:22-64
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:6:5-79
+	android:name
+		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:6:22-76
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:7:5-81
+	android:name
+		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:7:22-78
 application
-ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:5:5-27:19
+ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:9:5-32:19
 MERGED from [com.google.android.material:material:1.5.0] /Users/handahyeog/.gradle/caches/transforms-3/09b5b990793e4e84992dd5b078e94dd9/transformed/material-1.5.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.5.0] /Users/handahyeog/.gradle/caches/transforms-3/09b5b990793e4e84992dd5b078e94dd9/transformed/material-1.5.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/handahyeog/.gradle/caches/transforms-3/d3b64a44981f6730d3dc38c232befd32/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
@@ -84,45 +96,47 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/hand
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.9.0] /Users/handahyeog/.gradle/caches/transforms-3/2d36cdbeb90dfdfd402f076bef064238/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:12:9-35
+		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:16:9-35
 	android:label
-		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:10:9-41
+		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:14:9-41
 	android:fullBackupContent
-		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:8:9-54
+		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:12:9-54
 	android:roundIcon
-		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:11:9-54
+		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:15:9-54
 	tools:targetApi
-		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:14:9-29
+		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:19:9-29
 	android:icon
-		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:9:9-43
+		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:13:9-43
 	android:allowBackup
-		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:6:9-35
+		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:10:9-35
 	android:theme
-		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:13:9-44
+		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:18:9-44
 	android:dataExtractionRules
-		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:7:9-65
+		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:11:9-65
+	android:usesCleartextTraffic
+		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:17:9-44
 activity#com.hdk.subway.ClockActivity
-ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:15:9-17:40
+ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:20:9-22:40
 	android:exported
-		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:17:13-37
+		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:22:13-37
 	android:name
-		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:16:13-42
+		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:21:13-42
 activity#com.hdk.subway.MainActivity
-ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:18:9-26:20
+ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:23:9-31:20
 	android:exported
-		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:20:13-36
+		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:25:13-36
 	android:name
-		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:19:13-41
+		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:24:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:21:13-25:29
+ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:26:13-30:29
 action#android.intent.action.MAIN
-ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:22:17-69
+ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:27:17-69
 	android:name
-		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:22:25-66
+		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:27:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:24:17-77
+ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:29:17-77
 	android:name
-		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:24:27-74
+		ADDED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:29:27-74
 uses-sdk
 INJECTED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml
