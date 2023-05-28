@@ -20,6 +20,7 @@ id exit
 id favorite
 id imageView
 id information
+id pager
 id tabbar
 id testtext
 id toolbar

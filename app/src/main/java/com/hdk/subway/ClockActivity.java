@@ -1,36 +1,21 @@
 package com.hdk.subway;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.location.Address;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.w3c.dom.Text;
-
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -56,10 +41,11 @@ public class ClockActivity extends AppCompatActivity {
         tabbar = findViewById(R.id.tabbar);
         tv = findViewById(R.id.tv);
         testtext = findViewById(R.id.testtext);
+        pager = findViewById(R.id.pager);
+
         list = new ArrayList<>();
 
-//        pager = findViewById(R.id.pager);
-//        adapter = new MyPagerAdapter(list);
+//        adapter = new MyPagerAdapter(this, list);
 //        pager.setAdapter(adapter);
 
         MySingleton singleton = MySingleton.getInstance();
@@ -121,19 +107,8 @@ public class ClockActivity extends AppCompatActivity {
                 throw new RuntimeException(ex);
             }
 
-
-//                (stationLineNum.SearchSTNBySubwayLineInfo.row).forEach( str -> {
-//                        list.add(stationLineNum.SearchSTNBySubwayLineInfo.row.toString());
-//                    });
-
-
                     runOnUiThread(() -> {
-
-                        testtext.setText(list.toString());
-//                        pager.setAdapter(new MyPagerAdapter(list));
-//                        TabLayoutMediator mediator = new TabLayoutMediator(tabbar, pager, ((tab, position) -> tab.setText(list.get(position)) ));
-//
-//                        mediator.attach();
+//                        pager.setAdapter(new MyPagerAdapter(this, list));
                     });
 
 
