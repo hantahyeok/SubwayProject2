@@ -47,10 +47,18 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/pager"
+        <TextView
+            android:id="@+id/t"
+            android:text="Hello"
+            android:gravity="center"
+            android:textSize="80dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"/>
+
+
+<!--        <androidx.viewpager2.widget.ViewPager2-->
+<!--            android:id="@+id/pager"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent" />-->
 
 </LinearLayout>

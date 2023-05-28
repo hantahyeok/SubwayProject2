@@ -2837,7 +2837,6 @@ id outline
 id outward
 id overshoot
 id packed
-id pager
 id parallax
 id parent
 id parentPanel
@@ -2924,6 +2923,7 @@ id stretch
 id submenuarrow
 id submit_area
 id supportScrollUp
+id t
 id tabMode
 id tabbar
 id tag_accessibility_actions
