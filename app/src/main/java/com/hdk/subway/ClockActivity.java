@@ -21,6 +21,10 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -40,7 +44,6 @@ public class ClockActivity extends AppCompatActivity {
 
     TextView tv, testtext;
     ViewPager2 pager;
-    StationLineNum stationLineNum;
     List<String> list;
     MyPagerAdapter adapter;
     TabLayout tabbar;
@@ -94,34 +97,46 @@ public class ClockActivity extends AppCompatActivity {
             String serverUrl = "http://openapi.seoul.go.kr:8088/" +
                     apiKey + "/json/" + "SearchSTNBySubwayLineInfo/1/5/%20/" + stationName;
 
+
             try {
                 URL url = new URL(serverUrl);
                 InputStream is = url.openStream();
                 InputStreamReader isr = new InputStreamReader(is);
 
+                JsonParser parser = new JsonParser();
+                JsonObject jsonObject = parser.parse(isr).getAsJsonObject();
+                JsonObject searchSTNBySubwayLineInfo = jsonObject.getAsJsonObject("SearchSTNBySubwayLineInfo");
+                JsonArray rowArray = searchSTNBySubwayLineInfo.getAsJsonArray("row");
+
                 Gson gson = new Gson();
-                stationLineNum = gson.fromJson(isr, StationLineNum.class);
-//
-                    (stationLineNum.SearchSTNBySubwayLineInfo.row).forEach( str -> {
-                        list.add(stationLineNum.SearchSTNBySubwayLineInfo.row.toString());
-                    });
+                for (JsonElement element : rowArray) {
+                    StationLineNum stationLineNum = gson.fromJson(element, StationLineNum.class);
+
+                    String lineNum = stationLineNum.getLINE_NUM();
+                    list.add(lineNum);
+                }
+            } catch (MalformedURLException ex) {
+                throw new RuntimeException(ex);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+
+
+//                (stationLineNum.SearchSTNBySubwayLineInfo.row).forEach( str -> {
+//                        list.add(stationLineNum.SearchSTNBySubwayLineInfo.row.toString());
+//                    });
 
 
                     runOnUiThread(() -> {
 
                         testtext.setText(list.toString());
-////                        pager.setAdapter(new MyPagerAdapter(list));
-////                        TabLayoutMediator mediator = new TabLayoutMediator(tabbar, pager, ((tab, position) -> tab.setText(list.get(position)) ));
-////
-////                        mediator.attach();
+//                        pager.setAdapter(new MyPagerAdapter(list));
+//                        TabLayoutMediator mediator = new TabLayoutMediator(tabbar, pager, ((tab, position) -> tab.setText(list.get(position)) ));
+//
+//                        mediator.attach();
                     });
 
 
-            } catch (MalformedURLException e) {
-                throw new RuntimeException(e);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
         }
     }
 

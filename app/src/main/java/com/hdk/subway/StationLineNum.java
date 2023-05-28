@@ -4,30 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StationLineNum {
+    private String LINE_NUM;
 
-    SearchSTNBySubwayLineInfo SearchSTNBySubwayLineInfo;
-
-    public StationLineNum(SearchSTNBySubwayLineInfo SearchSTNBySubwayLineInfo){
-        this.SearchSTNBySubwayLineInfo = SearchSTNBySubwayLineInfo;
+    public String getLINE_NUM() {
+        return LINE_NUM;
     }
 
-}
-
-class SearchSTNBySubwayLineInfo{
-
-    List<Station> row;
-
-    public SearchSTNBySubwayLineInfo(List<Station> row){
-        this.row = row;
-    }
-}
-
-class Station{
-
-    String LINE_NUM;
-
-    public Station(String LINE_NUM){
+    public void setLINE_NUM(String LINE_NUM) {
         this.LINE_NUM = LINE_NUM;
     }
-
 }
