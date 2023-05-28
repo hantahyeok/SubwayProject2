@@ -2922,7 +2922,6 @@ int id stretch 0x7f090193
 int id submenuarrow 0x7f090194
 int id submit_area 0x7f090195
 int id supportScrollUp 0x7f090196
-int id t 0x7f090197
 int id tabMode 0x7f090198
 int id tabbar 0x7f090199
 int id tag_accessibility_actions 0x7f09019a
@@ -2942,6 +2941,7 @@ int id test_checkbox_android_button_tint 0x7f0901a7
 int id test_checkbox_app_button_tint 0x7f0901a8
 int id test_radiobutton_android_button_tint 0x7f0901a9
 int id test_radiobutton_app_button_tint 0x7f0901aa
+int id testtext 0x7f0901e4
 int id text 0x7f0901ab
 int id text2 0x7f0901ac
 int id textEnd 0x7f0901ad

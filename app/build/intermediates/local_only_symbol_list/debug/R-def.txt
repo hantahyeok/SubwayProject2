@@ -20,8 +20,8 @@ id exit
 id favorite
 id imageView
 id information
-id t
 id tabbar
+id testtext
 id toolbar
 id tv
 layout activity_clock

@@ -48,10 +48,10 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <TextView
-            android:id="@+id/t"
+            android:id="@+id/testtext"
             android:text="Hello"
             android:gravity="center"
-            android:textSize="80dp"
+            android:textSize="30dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 

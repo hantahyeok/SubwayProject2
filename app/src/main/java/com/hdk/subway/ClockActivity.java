@@ -37,7 +37,8 @@ import java.util.List;
 
 public class ClockActivity extends AppCompatActivity {
 
-    TextView tv, t;
+
+    TextView tv, testtext;
     ViewPager2 pager;
     StationLineNum stationLineNum;
     List<String> list;
@@ -51,7 +52,9 @@ public class ClockActivity extends AppCompatActivity {
 
         tabbar = findViewById(R.id.tabbar);
         tv = findViewById(R.id.tv);
-        t = findViewById(R.id.t);
+        testtext = findViewById(R.id.testtext);
+        list = new ArrayList<>();
+
 //        pager = findViewById(R.id.pager);
 //        adapter = new MyPagerAdapter(list);
 //        pager.setAdapter(adapter);
@@ -70,52 +73,9 @@ public class ClockActivity extends AppCompatActivity {
             }
         });
 
-//        stationNum(stationName);
 
-    }
-
-    void stationNum(String stationName){
-
-        new Thread(){
-            @Override
-            public void run() {
-                String apiKey = "50794a697674616839374849626e77";
-                String serverUrl = "http://openapi.seoul.go.kr:8088/" +
-                        apiKey + "/json/" + "SearchSTNBySubwayLineInfo/1/5/%20/" + stationName;
-
-                try {
-                    URL url = new URL(serverUrl);
-                    InputStream is = url.openStream();
-                    InputStreamReader isr = new InputStreamReader(is);
-
-                    Gson gson = new Gson();
-                    stationLineNum = gson.fromJson(isr, StationLineNum.class);
-//
-////                    (stationLineNum.SearchSTNBySubwayLineInfo.row).forEach( str -> {
-////                        list.add(stationLineNum.SearchSTNBySubwayLineInfo.row.toString());
-////                    });
-
-                    Handler handler = new Handler(Looper.getMainLooper());
-                    handler.post(() -> t.setText("새로운 텍스트"));
-//
-                    runOnUiThread(() -> {
-
-                        Toast.makeText(ClockActivity.this, "HHHH", Toast.LENGTH_SHORT).show();
-
-////                        pager.setAdapter(new MyPagerAdapter(list));
-////                        TabLayoutMediator mediator = new TabLayoutMediator(tabbar, pager, ((tab, position) -> tab.setText(list.get(position)) ));
-////
-////                        mediator.attach();
-                    });
-//
-
-                } catch (MalformedURLException e) {
-                    throw new RuntimeException(e);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }.start();
+        MyThread thread = new MyThread(stationName);
+        thread.start();
 
     }
 
@@ -124,5 +84,45 @@ public class ClockActivity extends AppCompatActivity {
         super.onBackPressed();
     }
 
+    class MyThread extends Thread{
 
-}
+        String stationName;
+        public MyThread(String stationName){this.stationName = stationName;};
+        @Override
+        public void run() {
+            String apiKey = "50794a697674616839374849626e77";
+            String serverUrl = "http://openapi.seoul.go.kr:8088/" +
+                    apiKey + "/json/" + "SearchSTNBySubwayLineInfo/1/5/%20/" + stationName;
+
+            try {
+                URL url = new URL(serverUrl);
+                InputStream is = url.openStream();
+                InputStreamReader isr = new InputStreamReader(is);
+
+                Gson gson = new Gson();
+                stationLineNum = gson.fromJson(isr, StationLineNum.class);
+//
+                    (stationLineNum.SearchSTNBySubwayLineInfo.row).forEach( str -> {
+                        list.add(stationLineNum.SearchSTNBySubwayLineInfo.row.toString());
+                    });
+
+
+                    runOnUiThread(() -> {
+
+                        testtext.setText(list.toString());
+////                        pager.setAdapter(new MyPagerAdapter(list));
+////                        TabLayoutMediator mediator = new TabLayoutMediator(tabbar, pager, ((tab, position) -> tab.setText(list.get(position)) ));
+////
+////                        mediator.attach();
+                    });
+
+
+            } catch (MalformedURLException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+}// ClockActivity class...
