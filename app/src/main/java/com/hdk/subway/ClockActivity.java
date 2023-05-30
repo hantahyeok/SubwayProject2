@@ -1,5 +1,6 @@
 package com.hdk.subway;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -7,9 +8,11 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -27,7 +30,7 @@ import java.util.List;
 public class ClockActivity extends AppCompatActivity {
 
 
-    TextView tv, testtext;
+    TextView tv;
     ViewPager2 pager;
     List<String> list;
     MyPagerAdapter adapter;
@@ -40,13 +43,12 @@ public class ClockActivity extends AppCompatActivity {
 
         tabbar = findViewById(R.id.tabbar);
         tv = findViewById(R.id.tv);
-        testtext = findViewById(R.id.testtext);
         pager = findViewById(R.id.pager);
 
         list = new ArrayList<>();
 
-//        adapter = new MyPagerAdapter(this, list);
-//        pager.setAdapter(adapter);
+        adapter = new MyPagerAdapter(this, list);
+        pager.setAdapter(adapter);
 
         MySingleton singleton = MySingleton.getInstance();
         String stationName = singleton.getData();
@@ -108,7 +110,14 @@ public class ClockActivity extends AppCompatActivity {
             }
 
                     runOnUiThread(() -> {
-//                        pager.setAdapter(new MyPagerAdapter(this, list));
+                        pager.setAdapter(new MyPagerAdapter(ClockActivity.this, list));
+                        TabLayoutMediator mediator = new TabLayoutMediator(tabbar, pager, new TabLayoutMediator.TabConfigurationStrategy() {
+                            @Override
+                            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                                tab.setText(list.get(position));
+                            }
+                        });
+                        mediator.attach();
                     });
 
 
