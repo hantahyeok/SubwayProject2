@@ -20,7 +20,10 @@ id exit
 id favorite
 id imageView
 id information
+id linear
 id pager
+id recyelr1
+id recyelr2
 id tabbar
 id toolbar
 id tv
