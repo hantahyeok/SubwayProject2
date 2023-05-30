@@ -83,6 +83,7 @@ public class ClockActivity extends AppCompatActivity {
             String apiKey = "50794a697674616839374849626e77";
             String serverUrl = "http://openapi.seoul.go.kr:8088/" +
                     apiKey + "/json/" + "SearchSTNBySubwayLineInfo/1/5/%20/" + stationName;
+            //http://openapi.seoul.go.kr:8088/50794a697674616839374849626e77/json/SearchSTNBySubwayLineInfo/1/5/%20/{역이름}
 
 
             try {
@@ -99,8 +100,10 @@ public class ClockActivity extends AppCompatActivity {
                 for (JsonElement element : rowArray) {
                     StationLineNum stationLineNum = gson.fromJson(element, StationLineNum.class);
 
-                    String lineNum = stationLineNum.getLINE_NUM();
-                    list.add(lineNum);
+                    if(stationName.equals(stationLineNum.getSTATION_NM())){
+                        String lineNum = stationLineNum.getLINE_NUM();
+                        list.add(lineNum);
+                    }
                 }
             } catch (MalformedURLException ex) {
                 throw new RuntimeException(ex);
