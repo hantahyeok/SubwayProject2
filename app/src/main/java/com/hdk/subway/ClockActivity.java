@@ -29,7 +29,6 @@ import java.util.List;
 
 public class ClockActivity extends AppCompatActivity {
 
-// 연습 git
     TextView tv;
     ViewPager2 pager;
     List<String> list;
