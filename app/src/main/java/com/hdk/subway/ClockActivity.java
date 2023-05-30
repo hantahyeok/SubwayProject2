@@ -29,7 +29,7 @@ import java.util.List;
 
 public class ClockActivity extends AppCompatActivity {
 
-// dkajdflsjdfksdfjlaskdfj
+// 연습 git
     TextView tv;
     ViewPager2 pager;
     List<String> list;
