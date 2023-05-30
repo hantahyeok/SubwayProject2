@@ -22,7 +22,6 @@ id imageView
 id information
 id pager
 id tabbar
-id testtext
 id toolbar
 id tv
 layout activity_clock

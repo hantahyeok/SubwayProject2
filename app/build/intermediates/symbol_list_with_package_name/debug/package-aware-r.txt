@@ -2943,7 +2943,6 @@ id test_checkbox_android_button_tint
 id test_checkbox_app_button_tint
 id test_radiobutton_android_button_tint
 id test_radiobutton_app_button_tint
-id testtext
 id text
 id text2
 id textEnd

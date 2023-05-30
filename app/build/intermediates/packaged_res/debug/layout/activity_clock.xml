@@ -26,7 +26,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginRight="55dp"
-                            android:text="Error"
+                            android:text="지하철역이름"
                             android:fontFamily="@font/font"
                             android:gravity="center"
                             android:textColor="@color/white"
@@ -46,14 +46,6 @@
                     app:tabIndicatorHeight="4dp"/>
 
         </com.google.android.material.appbar.AppBarLayout>
-
-        <TextView
-            android:id="@+id/testtext"
-            android:text="Hello"
-            android:gravity="center"
-            android:textSize="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
 
 
         <androidx.viewpager2.widget.ViewPager2
