@@ -19,7 +19,7 @@ public class TabFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_tab, container, false);
 
         tv1 = v.findViewById(R.id.tv1);
-//        http://swopenapi.seoul.go.kr/api/subway/416678437474616837356359705349/json/realtimeStationArrival/0/1000/%EC%99%95%EC%8B%AD%EB%A6%AC
+//        http://swopenapi.seoul.go.kr/api/subway/416678437474616837356359705349/json/realtimeStationArrival/0/1000/역이름
 
         DataSubwayThread dataSubwayThread = new DataSubwayThread();
         dataSubwayThread.start();
