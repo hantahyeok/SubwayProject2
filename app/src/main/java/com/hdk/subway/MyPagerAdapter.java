@@ -12,11 +12,11 @@ public class MyPagerAdapter extends FragmentStateAdapter{
 
     List<Fragment> fragments = new ArrayList<>();
 
-    public MyPagerAdapter(@NonNull FragmentActivity fragmentActivity, List<String> list) {
+    public MyPagerAdapter(@NonNull FragmentActivity fragmentActivity, List<String> list, String stationName) {
         super(fragmentActivity);
 
         for(int i = 0; i < list.size(); i++){
-            fragments.add(new TabFragment());
+            fragments.add(new TabFragment(stationName));
         }
     }
 

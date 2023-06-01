@@ -35,6 +35,8 @@ public class ClockActivity extends AppCompatActivity {
     MyPagerAdapter adapter;
     TabLayout tabbar;
 
+    String stationName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,12 +48,15 @@ public class ClockActivity extends AppCompatActivity {
 
         list = new ArrayList<>();
 
-        adapter = new MyPagerAdapter(this, list);
-        pager.setAdapter(adapter);
-
         MySingleton singleton = MySingleton.getInstance();
         String stationName = singleton.getData();
         tv.setText(stationName);
+
+        this.stationName = stationName;
+
+        adapter = new MyPagerAdapter(this, list, stationName);
+        pager.setAdapter(adapter);
+
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -64,7 +69,7 @@ public class ClockActivity extends AppCompatActivity {
         });
 
 
-        MyThread thread = new MyThread(stationName);
+        MyThread thread = new MyThread();
         thread.start();
 
     }
@@ -76,15 +81,13 @@ public class ClockActivity extends AppCompatActivity {
 
     class MyThread extends Thread{
 
-        String stationName;
-        public MyThread(String stationName){this.stationName = stationName;};
-        @Override
-        public void run() {
             String apiKey = "50794a697674616839374849626e77";
             String serverUrl = "http://openapi.seoul.go.kr:8088/" +
                     apiKey + "/json/" + "SearchSTNBySubwayLineInfo/1/5/%20/" + stationName;
             //http://openapi.seoul.go.kr:8088/50794a697674616839374849626e77/json/SearchSTNBySubwayLineInfo/1/5/%20/{역이름}
 
+        @Override
+        public void run() {
 
             try {
                 URL url = new URL(serverUrl);
@@ -112,7 +115,7 @@ public class ClockActivity extends AppCompatActivity {
             }
 
                     runOnUiThread(() -> {
-                        pager.setAdapter(new MyPagerAdapter(ClockActivity.this, list));
+                        pager.setAdapter(new MyPagerAdapter(ClockActivity.this, list, stationName));
                         TabLayoutMediator mediator = new TabLayoutMediator(tabbar, pager, new TabLayoutMediator.TabConfigurationStrategy() {
                             @Override
                             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
