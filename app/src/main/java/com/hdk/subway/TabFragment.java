@@ -137,12 +137,12 @@ public class TabFragment extends Fragment {
                     String arvlMsg3 = stationItem.getarvlMsg3();
                     String arvlCd = stationItem.getarvlCd();
                     String subwayList = stationItem.getsubwayList();
-
-                    list.get(0);
-
-                    if(subwayId.equals()){
-
-                    }
+//
+//                    list.get(0);
+//
+//                    if(subwayId.equals()){
+//
+//                    }
 
                     items.add(new Item1(trainLineNm, statnNm, btrainSttus, barvlDt, bstatnNm, recptnDt, arvlMsg2, arvlMsg3, arvlCd, subwayList));
 

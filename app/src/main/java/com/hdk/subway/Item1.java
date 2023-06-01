@@ -35,7 +35,7 @@ public class Item1 {
         this.arvlMsg2 = arvlMsg2;
         this.arvlMsg3 = arvlMsg3;
         this.arvlCd = arvlCd;
-        this.subwayList = subwayList
+        this.subwayList = subwayList;
     }
 
     public Item1(){
