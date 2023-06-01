@@ -2978,6 +2978,16 @@ int id transition_scene_layoutid_cache 0x7f0901ca
 int id transition_transform 0x7f0901cb
 int id triangle 0x7f0901cc
 int id tv 0x7f0901cd
+int id tv1 0x7f0901e7
+int id tv10 0x7f0901e9
+int id tv2 0x7f0901e8
+int id tv3 0x7f0901ea
+int id tv4 0x7f0901eb
+int id tv5 0x7f0901ec
+int id tv6 0x7f0901ed
+int id tv7 0x7f0901ee
+int id tv8 0x7f0901ef
+int id tv9 0x7f0901f0
 int id unchecked 0x7f0901ce
 int id uniform 0x7f0901cf
 int id unlabeled 0x7f0901d0
@@ -3158,6 +3168,7 @@ int layout notification_template_custom_big 0x7f0c0060
 int layout notification_template_icon_group 0x7f0c0061
 int layout notification_template_part_chronometer 0x7f0c0062
 int layout notification_template_part_time 0x7f0c0063
+int layout recyclerview_item 0x7f0c0077
 int layout select_dialog_item_material 0x7f0c0064
 int layout select_dialog_multichoice_material 0x7f0c0065
 int layout select_dialog_singlechoice_material 0x7f0c0066

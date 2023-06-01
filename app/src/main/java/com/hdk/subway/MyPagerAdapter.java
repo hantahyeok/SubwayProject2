@@ -16,7 +16,7 @@ public class MyPagerAdapter extends FragmentStateAdapter{
         super(fragmentActivity);
 
         for(int i = 0; i < list.size(); i++){
-            fragments.add(new TabFragment(stationName));
+            fragments.add(new TabFragment(stationName, list));
         }
     }
 
