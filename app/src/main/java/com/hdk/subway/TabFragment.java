@@ -33,7 +33,7 @@ public class TabFragment extends Fragment {
     MyTabRecyclerAdapter adapter1, adapter2;
 
     List<String> list;
-    String subwaylist = "";
+    List<String> sublist;
 
     TextView tv1, tv2;
     String stationName;
@@ -137,11 +137,14 @@ public class TabFragment extends Fragment {
                     String arvlMsg3 = stationItem.getarvlMsg3();
                     String arvlCd = stationItem.getarvlCd();
                     String subwayList = stationItem.getsubwayList();
+
+                    sublist.add(subwayList);
+
+
+//                    for(int i =0; i < list.size(); i++){
+//                        if(sublist.get(i).equals(subwayId)){
 //
-//                    list.get(0);
-//
-//                    if(subwayId.equals()){
-//
+//                        }
 //                    }
 
                     items.add(new Item1(trainLineNm, statnNm, btrainSttus, barvlDt, bstatnNm, recptnDt, arvlMsg2, arvlMsg3, arvlCd, subwayList));
@@ -153,6 +156,7 @@ public class TabFragment extends Fragment {
 
                     getActivity().runOnUiThread(() -> {
                         tv1.setText(bstatnNm);
+                        Toast.makeText(getContext(), subwayList, Toast.LENGTH_SHORT).show();
 
                         adapter1 = new MyTabRecyclerAdapter(getContext(), items);
                         adapter2 = new MyTabRecyclerAdapter(getContext(), items);
