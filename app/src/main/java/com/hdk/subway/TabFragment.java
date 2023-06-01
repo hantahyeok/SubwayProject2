@@ -26,7 +26,7 @@ import java.util.List;
 
 public class TabFragment extends Fragment {
 
-    ArrayList<StationItem> stationItems1 = new ArrayList<>();
+    ArrayList<Item> items = new ArrayList<>();
     ArrayList<StationItem> stationItems2 = new ArrayList<>();
     RecyclerView recyclerView1, recyclerView2;
     MyTabRecyclerAdapter adapter1, adapter2;
@@ -92,17 +92,18 @@ public class TabFragment extends Fragment {
                     String arvlMsg3 = stationItem.getarvlMsg3();
                     String arvlCd = stationItem.getarvlCd();
 
-                    stationItems1.add(new StationItem());
+                    items.add(new Item(subwayId, trainLineNm, statnNm, btrainSttus, barvlDt, bstatnNm, recptnDt, arvlMsg2, arvlMsg3, arvlCd));
+
+//                    stationItems1.add(new StationItem());
 
 
-                    list.add(subwayId);
 
 
                     getActivity().runOnUiThread(() -> {
                         tv1.setText(list.toString());
 
-                        adapter1 = new MyTabRecyclerAdapter(getContext(), stationItems1);
-                        adapter1 = new MyTabRecyclerAdapter(getContext(), stationItems2);
+                        adapter1 = new MyTabRecyclerAdapter(getContext(), items);
+//                        adapter2 = new MyTabRecyclerAdapter(getContext(), stationItems2);
                         recyclerView1.setAdapter(adapter1);
                         recyclerView2.setAdapter(adapter2);
                     });
