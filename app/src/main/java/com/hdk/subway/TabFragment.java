@@ -138,7 +138,7 @@ public class TabFragment extends Fragment {
                     String arvlCd = stationItem.getarvlCd();
                     String subwayList = stationItem.getsubwayList();
 
-                    sublist.add(subwayList);
+//                    sublist.add(subwayList);
 
 
 //                    for(int i =0; i < list.size(); i++){
