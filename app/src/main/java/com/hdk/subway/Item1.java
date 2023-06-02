@@ -25,7 +25,7 @@ public class Item1 {
     //연계호선
     String subwayList;
 
-    public Item1(String trainLineNm, String statnNm, String btrainSttus, String barvlDt, String bstatnNm, String recptnDt, String arvlMsg2, String arvlMsg3, String arvlCd, String subwayList){
+    public Item1(String subwayId, String trainLineNm, String statnNm, String btrainSttus, String barvlDt, String bstatnNm, String recptnDt, String arvlMsg2, String arvlMsg3, String arvlCd, String subwayList){
         this.trainLineNm = trainLineNm;
         this.statnNm = statnNm;
         this.btrainSttus = btrainSttus;

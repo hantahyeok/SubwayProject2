@@ -10,24 +10,48 @@ import java.util.List;
 
 public class MyPagerAdapter extends FragmentStateAdapter{
 
-    List<Fragment> fragments = new ArrayList<>();
+
+    private List<String> list;
+    private String stationName;
 
     public MyPagerAdapter(@NonNull FragmentActivity fragmentActivity, List<String> list, String stationName) {
         super(fragmentActivity);
 
-        for(int i = 0; i < list.size(); i++){
-            fragments.add(new TabFragment(stationName, list));
-        }
+        this.list = list;
+        this.stationName = stationName;
+
     }
 
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        return fragments.get(position);
+        String line = list.get(position);
+        return new TabFragment(stationName, line);
     }
 
     @Override
     public int getItemCount() {
-        return fragments.size();
+        return list.size();
     }
 }
+//
+//    List<Fragment> fragments = new ArrayList<>();
+//
+//    public MyPagerAdapter(@NonNull FragmentActivity fragmentActivity, List<String> list, String stationName) {
+//        super(fragmentActivity);
+//
+//        for(int i = 0; i < list.size(); i++){
+//            fragments.add(new TabFragment(stationName, list));
+//        }
+//    }
+//
+//    @NonNull
+//    @Override
+//    public Fragment createFragment(int position) {
+//        return fragments.get(position);
+//    }
+//
+//    @Override
+//    public int getItemCount() {
+//        return fragments.size();
+//    }

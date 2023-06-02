@@ -36,7 +36,7 @@ public class MyTabRecyclerAdapter extends RecyclerView.Adapter {
         Item1 item = items.get(position);
 
         VH vh = (VH) holder;
-//        vh.tv1.setText(item.subwayId);
+        vh.tv1.setText(item.subwayId);
         vh.tv2.setText(item.trainLineNm);
         vh.tv3.setText(item.statnNm);
         vh.tv4.setText(item.btrainSttus);
@@ -62,7 +62,7 @@ public class MyTabRecyclerAdapter extends RecyclerView.Adapter {
         public VH(@NonNull View itemView) {
             super(itemView);
 
-//            tv1= itemView.findViewById(R.id.tv1);
+            tv1= itemView.findViewById(R.id.tv1);
             tv2= itemView.findViewById(R.id.tv2);
             tv3= itemView.findViewById(R.id.tv3);
             tv4= itemView.findViewById(R.id.tv4);

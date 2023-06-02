@@ -3,6 +3,7 @@ package com.hdk.subway;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -32,17 +33,33 @@ public class TabFragment extends Fragment {
     RecyclerView recyclerView1, recyclerView2;
     MyTabRecyclerAdapter adapter1, adapter2;
 
-    List<String> list;
+    String line;
     List<String> sublist;
 
     TextView tv1, tv2;
     String stationName;
+    StationItem stationItem;
 
 
-    public TabFragment(String stationName, List<String> list){
+    String subwayId;
+
+    String trainLineNm;
+    String statnNm;
+    String btrainSttus;
+    String barvlDt;
+    String bstatnNm;
+    String recptnDt;
+    String arvlMsg2;
+    String arvlMsg3;
+    String arvlCd;
+    String subwayList;
+
+
+    public TabFragment(String stationName, String line){
         this.stationName = stationName;
-        this.list = list;
+        this.line = line;
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -55,40 +72,57 @@ public class TabFragment extends Fragment {
         recyclerView1 = v.findViewById(R.id.recyelr1);
         recyclerView2 = v.findViewById(R.id.recyelr2);
 
-//        for(int i = 0; i < list.size(); i++){
-//            switch(list.get(i)){
-//                case "01호선":
-//                    subwaylist = "1001";
-//                    break;
-//                case "02호선":
-//                    subwaylist = "1002";
-//                    break;
-//                case "03호선":
-//                    subwaylist = "1003";
-//                    break;
-//                case "04호선":
-//                    subwaylist = "1004";
-//                    break;
-//                case "05호선":
-//                    subwaylist = "1005";
-//                    break;
-//                case "06호선":
-//                    subwaylist = "1006";
-//                    break;
-//                case "07호선":
-//                    subwaylist = "1007";
-//                    break;
-//                case "08호선":
-//                    subwaylist = "1008";
-//                    break;
-//                case "09호선":
-//                    subwaylist = "1009";
-//                    break;
-//
-//
-//            }
-//
-//        }
+            switch(line) {
+                case "01호선":
+                    line = "1001";
+                    break;
+                case "02호선":
+                    line = "1002";
+                    break;
+                case "03호선":
+                    line = "1003";
+                    break;
+                case "04호선":
+                    line = "1004";
+                    break;
+                case "05호선":
+                    line = "1005";
+                    break;
+                case "06호선":
+                    line = "1006";
+                    break;
+                case "07호선":
+                    line = "1007";
+                    break;
+                case "08호선":
+                    line = "1008";
+                    break;
+                case "09호선":
+                    line = "1009";
+                    break;
+                case "중앙선":
+                    line = "1061";
+                    break;
+                case "경의중앙선":
+                    line = "1063";
+                    break;
+                case "공항철도":
+                    line = "1065";
+                    break;
+                case "경춘선":
+                    line = "1067";
+                    break;
+                case "수의분당선":
+                    line = "1075";
+                    break;
+                case "신분당선":
+                    line = "1077";
+                    break;
+                case "우이신설선":
+                    line = "1092";
+                    break;
+
+            }
 //        1001:1호선, 1002:2호선, 1003:3호선, 1004:4호선, 1005:5호선
 //        1006:6호선, 1007:7호선, 1008:8호선, 1009:9호선, 1061:중앙선
 //        1063:경의중앙선, 1065:공항철도, 1067:경춘선, 1075:수의분당선
@@ -96,7 +130,6 @@ public class TabFragment extends Fragment {
 
 
 
-        tv2.setText(list.get(1));
 
         DataSubwayThread dataSubwayThread = new DataSubwayThread();
         dataSubwayThread.start();
@@ -125,45 +158,35 @@ public class TabFragment extends Fragment {
                 for (JsonElement element : realtimeArrivalList) {
                     StationItem stationItem = gson.fromJson(element, StationItem.class);
 
-                    String subwayId = stationItem.getsubwayId();
+                    subwayId = stationItem.getsubwayId();
 
-                    String trainLineNm = stationItem.gettrainLineNm();
-                    String statnNm = stationItem.getstatnNm();
-                    String btrainSttus = stationItem.getbtrainSttus();
-                    String barvlDt = stationItem.getbarvlDt();
-                    String bstatnNm = stationItem.getbstatnNm();
-                    String recptnDt = stationItem.getrecptnDt();
-                    String arvlMsg2 = stationItem.getarvlMsg2();
-                    String arvlMsg3 = stationItem.getarvlMsg3();
-                    String arvlCd = stationItem.getarvlCd();
-                    String subwayList = stationItem.getsubwayList();
+                    if(line.equals(subwayId)){
+                        statnNm = stationItem.getstatnNm();
+                        btrainSttus = stationItem.getbtrainSttus();
+                        barvlDt = stationItem.getbarvlDt();
+                        bstatnNm = stationItem.getbstatnNm();
+                        recptnDt = stationItem.getrecptnDt();
+                        arvlMsg2 = stationItem.getarvlMsg2();
+                        arvlMsg3 = stationItem.getarvlMsg3();
+                        arvlCd = stationItem.getarvlCd();
+                        items.add(new Item1(subwayId, trainLineNm, statnNm, btrainSttus, barvlDt, bstatnNm, recptnDt, arvlMsg2, arvlMsg3, arvlCd, subwayList));
+                    }
 
-//                    sublist.add(subwayList);
+
+//                    subwayList = stationItem.getsubwayList();
 
 
-//                    for(int i =0; i < list.size(); i++){
-//                        if(sublist.get(i).equals(subwayId)){
-//
-//                        }
-//                    }
-
-                    items.add(new Item1(trainLineNm, statnNm, btrainSttus, barvlDt, bstatnNm, recptnDt, arvlMsg2, arvlMsg3, arvlCd, subwayList));
-
-//                    stationItems1.add(new StationItem());
-
-//z
-
+                }
 
                     getActivity().runOnUiThread(() -> {
                         tv1.setText(bstatnNm);
-                        Toast.makeText(getContext(), subwayList, Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getContext(), subwayList, Toast.LENGTH_SHORT).show();
 
                         adapter1 = new MyTabRecyclerAdapter(getContext(), items);
                         adapter2 = new MyTabRecyclerAdapter(getContext(), items);
                         recyclerView1.setAdapter(adapter1);
                         recyclerView2.setAdapter(adapter2);
                     });
-                }
 
 
 
