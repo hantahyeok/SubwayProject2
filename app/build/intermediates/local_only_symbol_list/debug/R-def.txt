@@ -20,6 +20,8 @@ id exit
 id favorite
 id imageView
 id information
+id line1
+id line2
 id linear
 id pager
 id recyelr1

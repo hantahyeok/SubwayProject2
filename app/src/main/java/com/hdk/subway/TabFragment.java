@@ -36,7 +36,7 @@ public class TabFragment extends Fragment {
     String line;
     List<String> sublist;
 
-    TextView tv1, tv2;
+    TextView line1, line2;
     String stationName;
     StationItem stationItem;
 
@@ -66,8 +66,8 @@ public class TabFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_tab, container, false);
 
-        tv1 = v.findViewById(R.id.tv1);
-        tv2 = v.findViewById(R.id.tv2);
+        line1 = v.findViewById(R.id.line1);
+        line2 = v.findViewById(R.id.line2);
 
         recyclerView1 = v.findViewById(R.id.recyelr1);
         recyclerView2 = v.findViewById(R.id.recyelr2);
@@ -179,7 +179,6 @@ public class TabFragment extends Fragment {
                 }
 
                     getActivity().runOnUiThread(() -> {
-                        tv1.setText(bstatnNm);
 //                        Toast.makeText(getContext(), subwayList, Toast.LENGTH_SHORT).show();
 
                         adapter1 = new MyTabRecyclerAdapter(getContext(), items);

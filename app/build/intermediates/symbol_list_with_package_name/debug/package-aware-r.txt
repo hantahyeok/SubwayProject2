@@ -2752,6 +2752,7 @@ id left
 id leftToRight
 id legacy
 id line1
+id line2
 id line3
 id linear
 id listMode
