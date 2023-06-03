@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         SubwayDatabaseHelper myDbHelper = new SubwayDatabaseHelper(MainActivity.this); // Reading SQLite database.
         try {
             myDbHelper.createDataBase();
-        } catch (IOException ioe) {
+    } catch (IOException ioe) {
             throw new Error("Unable to create database");
         }
         try {
