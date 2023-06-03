@@ -1,16 +1,15 @@
 package com.hdk.subway;
 
+import android.content.res.AssetManager;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -22,7 +21,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -145,8 +143,11 @@ public class TabFragment extends Fragment {
         @Override
         public void run() {
             try {
-                URL url = new URL(serverUrl);
-                InputStream is = url.openStream();
+                AssetManager assetManager = getActivity().getAssets(); // 이거
+//                URL url = new URL(serverUrl);
+//                InputStream is = url.openStream();
+                    InputStream is = assetManager.open("json/station"); // 이거
+
                 InputStreamReader isr = new InputStreamReader(is);
 
                 JsonParser parser = new JsonParser();
