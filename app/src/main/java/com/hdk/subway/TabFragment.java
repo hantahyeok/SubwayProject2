@@ -47,7 +47,6 @@ public class TabFragment extends Fragment {
     ArrayList<Item1> items1 = new ArrayList<>();
     ArrayList<Item2> items2 = new ArrayList<>();
 
-    ArrayList<StationItem> stationItems2 = new ArrayList<>();
     RecyclerView recyclerView1, recyclerView2;
     MyTabRecyclerAdapter1 adapter1;
     MyTabRecyclerAdapter2 adapter2;
@@ -56,7 +55,6 @@ public class TabFragment extends Fragment {
 
     TextView line1, line2;
     String stationName;
-    StationItem stationItem;
 
     String subwayId;
 
@@ -216,8 +214,23 @@ public class TabFragment extends Fragment {
                     statnTid = stationItem.getstatnTid();
 
                     if(line.equals(subwayId)) {
+                            statnNm = stationItem.getstatnNm();
+                            btrainSttus = stationItem.getbtrainSttus();
+                            barvlDt = stationItem.getbarvlDt();
+                            bstatnNm = stationItem.getbstatnNm();
+                            recptnDt = stationItem.getrecptnDt();
+                            arvlMsg2 = stationItem.getarvlMsg2();
+                            arvlMsg3 = stationItem.getarvlMsg3();
+                            arvlCd = stationItem.getarvlCd();
 
-                            for(int i = 0; i < dataList.size(); i++){
+                        if(true){
+                            items1.add(new Item1(trainLineNm, statnNm, btrainSttus, barvlDt, bstatnNm, recptnDt, arvlMsg2, arvlMsg3, arvlCd, subwayList));
+                        }
+                        if(true){
+                            items2.add(new Item2(trainLineNm, statnNm, btrainSttus, barvlDt, bstatnNm, recptnDt, arvlMsg2, arvlMsg3, arvlCd, subwayList));
+                        }
+
+                        for(int i = 0; i < dataList.size(); i++){
                                 if(STATN_ID.get(i).equals(statnFid)){
                                     tvline1 = STATN_NM.get(i);
                                 }
@@ -234,15 +247,6 @@ public class TabFragment extends Fragment {
                                 }
                             });
 
-                            statnNm = stationItem.getstatnNm();
-                            btrainSttus = stationItem.getbtrainSttus();
-                            barvlDt = stationItem.getbarvlDt();
-                            bstatnNm = stationItem.getbstatnNm();
-                            recptnDt = stationItem.getrecptnDt();
-                            arvlMsg2 = stationItem.getarvlMsg2();
-                            arvlMsg3 = stationItem.getarvlMsg3();
-                            arvlCd = stationItem.getarvlCd();
-                            items2.add(new Item2(trainLineNm, statnNm, btrainSttus, barvlDt, bstatnNm, recptnDt, arvlMsg2, arvlMsg3, arvlCd, subwayList));
 
                     }// if....
 

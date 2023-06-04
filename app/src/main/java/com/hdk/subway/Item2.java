@@ -36,8 +36,9 @@ public class Item2 {
         this.subwayList = subwayList;
     }
 
-    public Item2() {
+    public Item2(){
 
     }
 
 }
+
