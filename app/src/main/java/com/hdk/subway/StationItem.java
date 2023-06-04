@@ -41,7 +41,7 @@ public class StationItem {
     public String getarvlCd(){return arvlCd;}
     public String getsubwayList(){return subwayList;}
     public String getstatnFid(){return statnFid;}
-    public String getstatnTid(){return getstatnTid();}
+    public String getstatnTid(){return statnTid;}
 
     public void setsubwayId(String subwayId){this.subwayId = subwayId;}
     public void settrainLineNm(String trainLineNm){this.trainLineNm = trainLineNm;}
