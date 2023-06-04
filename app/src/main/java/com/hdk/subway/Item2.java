@@ -2,8 +2,6 @@ package com.hdk.subway;
 
 public class Item2 {
 
-    //지하철 호선 ID
-    String subwayId;
     //도착지 방면
     String trainLineNm;
     //지하철 역명
@@ -22,8 +20,10 @@ public class Item2 {
     String arvlMsg3;
     //도착 코드
     String arvlCd;
+    //연계호선
+    String subwayList;
 
-    public Item2(String trainLineNm, String statnNm, String btrainSttus, String barvlDt, String bstatnNm, String recptnDt, String arvlMsg2, String arvlMsg3, String arvlCd) {
+    public Item2(String trainLineNm, String statnNm, String btrainSttus, String barvlDt, String bstatnNm, String recptnDt, String arvlMsg2, String arvlMsg3, String arvlCd, String subwayList){
         this.trainLineNm = trainLineNm;
         this.statnNm = statnNm;
         this.btrainSttus = btrainSttus;
@@ -33,6 +33,7 @@ public class Item2 {
         this.arvlMsg2 = arvlMsg2;
         this.arvlMsg3 = arvlMsg3;
         this.arvlCd = arvlCd;
+        this.subwayList = subwayList;
     }
 
     public Item2() {

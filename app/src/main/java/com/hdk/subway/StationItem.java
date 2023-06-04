@@ -24,6 +24,10 @@ public class StationItem {
     private String arvlCd;
     //연계호선
     private String subwayList;
+    //이전지하철역ID
+    private String statnFid;
+    //다음지하철역ID
+    private String statnTid;
 
     public String getsubwayId(){return subwayId;}
     public String gettrainLineNm(){return trainLineNm;}
@@ -36,6 +40,8 @@ public class StationItem {
     public String getarvlMsg3(){return arvlMsg3;}
     public String getarvlCd(){return arvlCd;}
     public String getsubwayList(){return subwayList;}
+    public String getstatnFid(){return statnFid;}
+    public String getstatnTid(){return getstatnTid();}
 
     public void setsubwayId(String subwayId){this.subwayId = subwayId;}
     public void settrainLineNm(String trainLineNm){this.trainLineNm = trainLineNm;}

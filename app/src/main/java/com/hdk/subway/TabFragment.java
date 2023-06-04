@@ -17,6 +17,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -26,18 +27,22 @@ import java.util.List;
 
 public class TabFragment extends Fragment {
 
+    //csv list..
+    List<String> SUBWAY_ID; //data[0]
+    List<String> STATN_ID;  //data[1]
+    List<String> STATN_NM;  //data[2]
+    List<String[]> lineName;//data[3]
+
     ArrayList<Item1> items = new ArrayList<>();
     ArrayList<StationItem> stationItems2 = new ArrayList<>();
     RecyclerView recyclerView1, recyclerView2;
     MyTabRecyclerAdapter adapter1, adapter2;
 
     String line;
-    List<String> sublist;
 
     TextView line1, line2;
     String stationName;
     StationItem stationItem;
-
 
     String subwayId;
 
@@ -51,6 +56,8 @@ public class TabFragment extends Fragment {
     String arvlMsg3;
     String arvlCd;
     String subwayList;
+    String statnFid;
+    String statnTid;
 
 
     public TabFragment(String stationName, String line){
@@ -120,12 +127,11 @@ public class TabFragment extends Fragment {
                     line = "1092";
                     break;
 
-            }
+            }// switch..
 //        1001:1호선, 1002:2호선, 1003:3호선, 1004:4호선, 1005:5호선
 //        1006:6호선, 1007:7호선, 1008:8호선, 1009:9호선, 1061:중앙선
 //        1063:경의중앙선, 1065:공항철도, 1067:경춘선, 1075:수의분당선
 //        1077:신분당선, 1092:우이신설선
-
 
 
 
@@ -144,9 +150,33 @@ public class TabFragment extends Fragment {
         public void run() {
             try {
                 AssetManager assetManager = getActivity().getAssets(); // 이거
+
+                try {
+                    InputStream inputStream = assetManager.open("StationCode.csv");
+                    InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                    BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                    List<String[]> dataList = new ArrayList<>();
+
+                    String line;
+                    while ((line = bufferedReader.readLine()) != null) {
+                        String[] data = line.split(",");
+                        dataList.add(data);
+                    }
+                    bufferedReader.close();
+
+                    for(String[] data : dataList){
+                        STATN_ID.add(data[1]);
+                        STATN_NM.add(data[2]);
+                    }
+
+                } catch (Exception e){
+                    e.printStackTrace();;
+                }
+
 //                URL url = new URL(serverUrl);
 //                InputStream is = url.openStream();
-                    InputStream is = assetManager.open("json/station"); // 이거
+                InputStream is = assetManager.open("json/station"); // 이거
 
                 InputStreamReader isr = new InputStreamReader(is);
 
@@ -160,32 +190,49 @@ public class TabFragment extends Fragment {
                     StationItem stationItem = gson.fromJson(element, StationItem.class);
 
                     subwayId = stationItem.getsubwayId();
+                    statnFid = stationItem.getstatnFid();
+                    statnTid = stationItem.getstatnTid();
 
                     if(line.equals(subwayId)){
-                        statnNm = stationItem.getstatnNm();
-                        btrainSttus = stationItem.getbtrainSttus();
-                        barvlDt = stationItem.getbarvlDt();
-                        bstatnNm = stationItem.getbstatnNm();
-                        recptnDt = stationItem.getrecptnDt();
-                        arvlMsg2 = stationItem.getarvlMsg2();
-                        arvlMsg3 = stationItem.getarvlMsg3();
-                        arvlCd = stationItem.getarvlCd();
-                        items.add(new Item1(subwayId, trainLineNm, statnNm, btrainSttus, barvlDt, bstatnNm, recptnDt, arvlMsg2, arvlMsg3, arvlCd, subwayList));
+                        for (String i : STATN_ID){
+                            if(STATN_ID.equals(statnFid)){
+                                statnNm = stationItem.getstatnNm();
+                                btrainSttus = stationItem.getbtrainSttus();
+                                barvlDt = stationItem.getbarvlDt();
+                                bstatnNm = stationItem.getbstatnNm();
+                                recptnDt = stationItem.getrecptnDt();
+                                arvlMsg2 = stationItem.getarvlMsg2();
+                                arvlMsg3 = stationItem.getarvlMsg3();
+                                arvlCd = stationItem.getarvlCd();
+                                items.add(new Item1(trainLineNm, statnNm, btrainSttus, barvlDt, bstatnNm, recptnDt, arvlMsg2, arvlMsg3, arvlCd, subwayList));
+                            }
+                        }
+
+                        for(String i : STATN_NM){
+                            if(STATN_NM.equals(statnTid)){
+                                statnNm = stationItem.getstatnNm();
+                                btrainSttus = stationItem.getbtrainSttus();
+                                barvlDt = stationItem.getbarvlDt();
+                                bstatnNm = stationItem.getbstatnNm();
+                                recptnDt = stationItem.getrecptnDt();
+                                arvlMsg2 = stationItem.getarvlMsg2();
+                                arvlMsg3 = stationItem.getarvlMsg3();
+                                arvlCd = stationItem.getarvlCd();
+//                                items.add(new Item2(trainLineNm, statnNm, btrainSttus, barvlDt, bstatnNm, recptnDt, arvlMsg2, arvlMsg3, arvlCd, subwayList));
+                            }
+                        }
+
                     }
-
-
-//                    subwayList = stationItem.getsubwayList();
-
 
                 }
 
                     getActivity().runOnUiThread(() -> {
 //                        Toast.makeText(getContext(), subwayList, Toast.LENGTH_SHORT).show();
-
                         adapter1 = new MyTabRecyclerAdapter(getContext(), items);
                         adapter2 = new MyTabRecyclerAdapter(getContext(), items);
                         recyclerView1.setAdapter(adapter1);
                         recyclerView2.setAdapter(adapter2);
+
                     });
 
 
