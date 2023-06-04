@@ -6,6 +6,8 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,14 +32,17 @@ import java.util.List;
 public class TabFragment extends Fragment {
 
 //  csv list..
+    List<String[]> dataList; //전체 데이터양
     List<String> SUBWAY_ID = new ArrayList<>(); //data[0]
     List<String> STATN_ID = new ArrayList<>();  //data[1]
     List<String> STATN_NM = new ArrayList<>();  //data[2]
     List<String> lineName = new ArrayList<>();//data[3]
-    String subway_id;
-    String statn_id;
-    String statn_nm;
-    String line_name;
+//    String subway_id;
+//    String statn_id;
+//    String statn_nm;
+//    String line_name;
+
+    String tvline1, tvline2;
 
     ArrayList<Item1> items1 = new ArrayList<>();
     ArrayList<Item2> items2 = new ArrayList<>();
@@ -166,7 +171,7 @@ public class TabFragment extends Fragment {
                     InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
                     BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 
-                    List<String[]> dataList = new ArrayList<>();
+                    dataList = new ArrayList<>();
 
                     String line;
                     while ((line = bufferedReader.readLine()) != null) {
@@ -200,6 +205,8 @@ public class TabFragment extends Fragment {
 
                 Gson gson = new Gson();
 
+                Handler handler = new Handler(Looper.getMainLooper());
+
                 for (JsonElement element : realtimeArrivalList) {
                     StationItem stationItem = gson.fromJson(element, StationItem.class);
 
@@ -210,24 +217,23 @@ public class TabFragment extends Fragment {
 
                     if(line.equals(subwayId)) {
 
-                            for (String id : STATN_ID) {
-                                if (id.equals(statnFid)) statn_id = id;
-                                if (id.equals(statnTid)) statn_nm = id;
+                            for(int i = 0; i < dataList.size(); i++){
+                                if(STATN_ID.get(i).equals(statnFid)){
+                                    tvline1 = STATN_NM.get(i);
+                                }
+                                if(STATN_ID.get(i).equals(statnTid)){
+                                    tvline2 = STATN_NM.get(i);
+                                }
                             }
 
-                        if (statn_id.equals(statnFid)) {
-                            statnNm = stationItem.getstatnNm();
-                            btrainSttus = stationItem.getbtrainSttus();
-                            barvlDt = stationItem.getbarvlDt();
-                            bstatnNm = stationItem.getbstatnNm();
-                            recptnDt = stationItem.getrecptnDt();
-                            arvlMsg2 = stationItem.getarvlMsg2();
-                            arvlMsg3 = stationItem.getarvlMsg3();
-                            arvlCd = stationItem.getarvlCd();
-                            items1.add(new Item1(trainLineNm, statnNm, btrainSttus, barvlDt, bstatnNm, recptnDt, arvlMsg2, arvlMsg3, arvlCd, subwayList));
-                        }
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    line1.setText(tvline1 + " 방향");
+                                    line2.setText(tvline2 + " 방향");
+                                }
+                            });
 
-                        if (statn_nm.equals(statnTid)) {
                             statnNm = stationItem.getstatnNm();
                             btrainSttus = stationItem.getbtrainSttus();
                             barvlDt = stationItem.getbarvlDt();
@@ -237,7 +243,6 @@ public class TabFragment extends Fragment {
                             arvlMsg3 = stationItem.getarvlMsg3();
                             arvlCd = stationItem.getarvlCd();
                             items2.add(new Item2(trainLineNm, statnNm, btrainSttus, barvlDt, bstatnNm, recptnDt, arvlMsg2, arvlMsg3, arvlCd, subwayList));
-                        }
 
                     }// if....
 
