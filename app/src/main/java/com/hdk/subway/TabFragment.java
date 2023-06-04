@@ -223,12 +223,12 @@ public class TabFragment extends Fragment {
                             arvlMsg3 = stationItem.getarvlMsg3();
                             arvlCd = stationItem.getarvlCd();
 
-                        if(true){
-                            items1.add(new Item1(trainLineNm, statnNm, btrainSttus, barvlDt, bstatnNm, recptnDt, arvlMsg2, arvlMsg3, arvlCd, subwayList));
-                        }
-                        if(true){
-                            items2.add(new Item2(trainLineNm, statnNm, btrainSttus, barvlDt, bstatnNm, recptnDt, arvlMsg2, arvlMsg3, arvlCd, subwayList));
-                        }
+//                        if(true){
+//                            items1.add(new Item1(trainLineNm, statnNm, btrainSttus, barvlDt, bstatnNm, recptnDt, arvlMsg2, arvlMsg3, arvlCd, subwayList));
+//                        }
+//                        if(true){
+//                            items2.add(new Item2(trainLineNm, statnNm, btrainSttus, barvlDt, bstatnNm, recptnDt, arvlMsg2, arvlMsg3, arvlCd, subwayList));
+//                        }
 
                         for(int i = 0; i < dataList.size(); i++){
                                 if(STATN_ID.get(i).equals(statnFid)){
