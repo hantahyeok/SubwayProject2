@@ -1,5 +1,6 @@
 package com.hdk.subway;
 
+import android.annotation.SuppressLint;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 
@@ -32,18 +33,7 @@ import java.util.List;
 
 public class TabFragment extends Fragment {
 
-//  csv list..
-    List<String[]> dataList; //전체 데이터양
-    List<String> SUBWAY_ID = new ArrayList<>(); //data[0]
-    List<String> STATN_ID = new ArrayList<>();  //data[1]
-    List<String> STATN_NM = new ArrayList<>();  //data[2]
-    List<String> lineName = new ArrayList<>();//data[3]
-//    String subway_id;
-//    String statn_id;
-//    String statn_nm;
-//    String line_name;
-
-    String tvline1, tvline2;
+    List<String> go = new ArrayList<>();
 
     ArrayList<Item1> items1 = new ArrayList<>();
     ArrayList<Item2> items2 = new ArrayList<>();
@@ -121,7 +111,7 @@ public class TabFragment extends Fragment {
                 case "중앙선":
                     line = "1061";
                     break;
-                case "경의중앙선":
+                case "경의선":
                     line = "1063";
                     break;
                 case "공항철도":
@@ -130,7 +120,7 @@ public class TabFragment extends Fragment {
                 case "경춘선":
                     line = "1067";
                     break;
-                case "수의분당선":
+                case "수인분당선":
                     line = "1075";
                     break;
                 case "신분당선":
@@ -160,41 +150,15 @@ public class TabFragment extends Fragment {
         // /옆에 역명 넣기
         String serverUrl = "http://swopenapi.seoul.go.kr/api/subway/416678437474616837356359705349/json/realtimeStationArrival/0/100/" + stationName;
 
+        @SuppressLint("SuspiciousIndentation")
         @Override
         public void run() {
             try {
                 AssetManager assetManager = getActivity().getAssets(); // 이거
 
-                try {
-                    InputStream inputStream = assetManager.open("StationCode.csv");
-                    InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-                    BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-
-                    dataList = new ArrayList<>();
-
-                    String line;
-                    while ((line = bufferedReader.readLine()) != null) {
-                        String[] data = line.split(",");
-                        dataList.add(data);
-                    }
-
-                    bufferedReader.close();
-
-                    for(String[] data : dataList){
-//                SUBWAY_ID.add(data[0]);
-                        STATN_ID.add(data[1]);
-                        STATN_NM.add(data[2]);
-//                lineName.add(data[3]);
-
-                    }
-
-                } catch (Exception e){
-                    e.printStackTrace();
-                }
-
-                URL url = new URL(serverUrl);
-                InputStream is = url.openStream();
-//                InputStream is = assetManager.open("json/station"); // 이거
+//                URL url = new URL(serverUrl);
+//                InputStream is = url.openStream();
+                InputStream is = assetManager.open("json/station"); // 이거
 
                 InputStreamReader isr = new InputStreamReader(is);
 
@@ -214,37 +178,27 @@ public class TabFragment extends Fragment {
                     statnFid = stationItem.getstatnFid();
                     statnTid = stationItem.getstatnTid();
 
-                    if(line.equals(subwayId)) {
-                            statnNm = stationItem.getstatnNm();
-                            btrainSttus = stationItem.getbtrainSttus();
-                            barvlDt = stationItem.getbarvlDt();
-                            bstatnNm = stationItem.getbstatnNm();
-                            recptnDt = stationItem.getrecptnDt();
-                            arvlMsg2 = stationItem.getarvlMsg2();
-                            arvlMsg3 = stationItem.getarvlMsg3();
-                            arvlCd = stationItem.getarvlCd();
-                            trainLineNm = stationItem.gettrainLineNm();
+                    trainLineNm = stationItem.gettrainLineNm();
 
+                    String[] str = trainLineNm.split(" - ");
+                    go.add(str[1]);
+
+                    statnNm = stationItem.getstatnNm();
+                    btrainSttus = stationItem.getbtrainSttus();
+                    barvlDt = stationItem.getbarvlDt();
+                    bstatnNm = stationItem.getbstatnNm();
+                    recptnDt = stationItem.getrecptnDt();
+                    arvlMsg2 = stationItem.getarvlMsg2();
+                    arvlMsg3 = stationItem.getarvlMsg3();
+                    arvlCd = stationItem.getarvlCd();
+
+
+                    if(line.equals(subwayId)) { //호선 분리
+//                        if(go.get(0).contains(str[1])){
                             items1.add(new Item1(trainLineNm, statnNm, btrainSttus, barvlDt, bstatnNm, recptnDt, arvlMsg2, arvlMsg3, arvlCd, subwayList));
+//                        }else{
                             items2.add(new Item2(trainLineNm, statnNm, btrainSttus, barvlDt, bstatnNm, recptnDt, arvlMsg2, arvlMsg3, arvlCd, subwayList));
-
-                        for(int i = 0; i < dataList.size(); i++){
-                                if(STATN_ID.get(i).equals(statnFid)){
-                                    tvline1 = STATN_NM.get(i);
-                                }
-                                if(STATN_ID.get(i).equals(statnTid)){
-                                    tvline2 = STATN_NM.get(i);
-                                }
-                            }
-
-                            handler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    line1.setText(tvline1 + " 방향");
-                                    line2.setText(tvline2 + " 방향");
-                                }
-                            });
-
+//                        }
 
                     }// if....
 
