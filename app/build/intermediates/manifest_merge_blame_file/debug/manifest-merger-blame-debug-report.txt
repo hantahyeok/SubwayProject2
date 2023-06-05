@@ -6,100 +6,100 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="24"
-8-->C:\Users\kmj74\Desktop\Projects2\Subway\app\src\main\AndroidManifest.xml
+8-->/Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml
 9        android:targetSdkVersion="33" />
-9-->C:\Users\kmj74\Desktop\Projects2\Subway\app\src\main\AndroidManifest.xml
+9-->/Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
-11-->C:\Users\kmj74\Desktop\Projects2\Subway\app\src\main\AndroidManifest.xml:5:5-67
-11-->C:\Users\kmj74\Desktop\Projects2\Subway\app\src\main\AndroidManifest.xml:5:22-64
+11-->/Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:5:5-67
+11-->/Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:5:22-64
 12    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-12-->C:\Users\kmj74\Desktop\Projects2\Subway\app\src\main\AndroidManifest.xml:6:5-79
-12-->C:\Users\kmj74\Desktop\Projects2\Subway\app\src\main\AndroidManifest.xml:6:22-76
+12-->/Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:6:5-79
+12-->/Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:6:22-76
 13    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-13-->C:\Users\kmj74\Desktop\Projects2\Subway\app\src\main\AndroidManifest.xml:7:5-81
-13-->C:\Users\kmj74\Desktop\Projects2\Subway\app\src\main\AndroidManifest.xml:7:22-78
+13-->/Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:7:5-81
+13-->/Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:7:22-78
 14
 15    <permission
-15-->[androidx.core:core:1.9.0] C:\Users\kmj74\.gradle\caches\transforms-3\2d36cdbeb90dfdfd402f076bef064238\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
+15-->[androidx.core:core:1.9.0] /Users/handahyeog/.gradle/caches/transforms-3/2d36cdbeb90dfdfd402f076bef064238/transformed/core-1.9.0/AndroidManifest.xml:22:5-24:47
 16        android:name="com.hdk.subway.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-16-->[androidx.core:core:1.9.0] C:\Users\kmj74\.gradle\caches\transforms-3\2d36cdbeb90dfdfd402f076bef064238\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
+16-->[androidx.core:core:1.9.0] /Users/handahyeog/.gradle/caches/transforms-3/2d36cdbeb90dfdfd402f076bef064238/transformed/core-1.9.0/AndroidManifest.xml:23:9-81
 17        android:protectionLevel="signature" />
-17-->[androidx.core:core:1.9.0] C:\Users\kmj74\.gradle\caches\transforms-3\2d36cdbeb90dfdfd402f076bef064238\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
+17-->[androidx.core:core:1.9.0] /Users/handahyeog/.gradle/caches/transforms-3/2d36cdbeb90dfdfd402f076bef064238/transformed/core-1.9.0/AndroidManifest.xml:24:9-44
 18
 19    <uses-permission android:name="com.hdk.subway.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-19-->[androidx.core:core:1.9.0] C:\Users\kmj74\.gradle\caches\transforms-3\2d36cdbeb90dfdfd402f076bef064238\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
-19-->[androidx.core:core:1.9.0] C:\Users\kmj74\.gradle\caches\transforms-3\2d36cdbeb90dfdfd402f076bef064238\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
+19-->[androidx.core:core:1.9.0] /Users/handahyeog/.gradle/caches/transforms-3/2d36cdbeb90dfdfd402f076bef064238/transformed/core-1.9.0/AndroidManifest.xml:26:5-97
+19-->[androidx.core:core:1.9.0] /Users/handahyeog/.gradle/caches/transforms-3/2d36cdbeb90dfdfd402f076bef064238/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
 20
 21    <application
-21-->C:\Users\kmj74\Desktop\Projects2\Subway\app\src\main\AndroidManifest.xml:9:5-32:19
+21-->/Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:9:5-32:19
 22        android:allowBackup="true"
-22-->C:\Users\kmj74\Desktop\Projects2\Subway\app\src\main\AndroidManifest.xml:10:9-35
+22-->/Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:10:9-35
 23        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-23-->[androidx.core:core:1.9.0] C:\Users\kmj74\.gradle\caches\transforms-3\2d36cdbeb90dfdfd402f076bef064238\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
+23-->[androidx.core:core:1.9.0] /Users/handahyeog/.gradle/caches/transforms-3/2d36cdbeb90dfdfd402f076bef064238/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
 24        android:dataExtractionRules="@xml/data_extraction_rules"
-24-->C:\Users\kmj74\Desktop\Projects2\Subway\app\src\main\AndroidManifest.xml:11:9-65
+24-->/Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:11:9-65
 25        android:debuggable="true"
 26        android:extractNativeLibs="false"
 27        android:fullBackupContent="@xml/backup_rules"
-27-->C:\Users\kmj74\Desktop\Projects2\Subway\app\src\main\AndroidManifest.xml:12:9-54
+27-->/Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:12:9-54
 28        android:icon="@mipmap/ic_launcher"
-28-->C:\Users\kmj74\Desktop\Projects2\Subway\app\src\main\AndroidManifest.xml:13:9-43
+28-->/Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:13:9-43
 29        android:label="@string/app_name"
-29-->C:\Users\kmj74\Desktop\Projects2\Subway\app\src\main\AndroidManifest.xml:14:9-41
+29-->/Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:14:9-41
 30        android:roundIcon="@mipmap/ic_launcher_round"
-30-->C:\Users\kmj74\Desktop\Projects2\Subway\app\src\main\AndroidManifest.xml:15:9-54
+30-->/Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:15:9-54
 31        android:supportsRtl="true"
-31-->C:\Users\kmj74\Desktop\Projects2\Subway\app\src\main\AndroidManifest.xml:16:9-35
+31-->/Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:16:9-35
 32        android:testOnly="true"
 33        android:theme="@style/Theme.Subway"
-33-->C:\Users\kmj74\Desktop\Projects2\Subway\app\src\main\AndroidManifest.xml:18:9-44
+33-->/Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:18:9-44
 34        android:usesCleartextTraffic="true" >
-34-->C:\Users\kmj74\Desktop\Projects2\Subway\app\src\main\AndroidManifest.xml:17:9-44
+34-->/Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:17:9-44
 35        <activity
-35-->C:\Users\kmj74\Desktop\Projects2\Subway\app\src\main\AndroidManifest.xml:20:9-22:40
+35-->/Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:20:9-22:40
 36            android:name="com.hdk.subway.ClockActivity"
-36-->C:\Users\kmj74\Desktop\Projects2\Subway\app\src\main\AndroidManifest.xml:21:13-42
+36-->/Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:21:13-42
 37            android:exported="false" />
-37-->C:\Users\kmj74\Desktop\Projects2\Subway\app\src\main\AndroidManifest.xml:22:13-37
+37-->/Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:22:13-37
 38        <activity
-38-->C:\Users\kmj74\Desktop\Projects2\Subway\app\src\main\AndroidManifest.xml:23:9-31:20
+38-->/Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:23:9-31:20
 39            android:name="com.hdk.subway.MainActivity"
-39-->C:\Users\kmj74\Desktop\Projects2\Subway\app\src\main\AndroidManifest.xml:24:13-41
+39-->/Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:24:13-41
 40            android:exported="true" >
-40-->C:\Users\kmj74\Desktop\Projects2\Subway\app\src\main\AndroidManifest.xml:25:13-36
+40-->/Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:25:13-36
 41            <intent-filter>
-41-->C:\Users\kmj74\Desktop\Projects2\Subway\app\src\main\AndroidManifest.xml:26:13-30:29
+41-->/Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:26:13-30:29
 42                <action android:name="android.intent.action.MAIN" />
-42-->C:\Users\kmj74\Desktop\Projects2\Subway\app\src\main\AndroidManifest.xml:27:17-69
-42-->C:\Users\kmj74\Desktop\Projects2\Subway\app\src\main\AndroidManifest.xml:27:25-66
+42-->/Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:27:17-69
+42-->/Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:27:25-66
 43
 44                <category android:name="android.intent.category.LAUNCHER" />
-44-->C:\Users\kmj74\Desktop\Projects2\Subway\app\src\main\AndroidManifest.xml:29:17-77
-44-->C:\Users\kmj74\Desktop\Projects2\Subway\app\src\main\AndroidManifest.xml:29:27-74
+44-->/Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:29:17-77
+44-->/Users/handahyeog/Desktop/Android/Projects2/Subway/app/src/main/AndroidManifest.xml:29:27-74
 45            </intent-filter>
 46        </activity>
 47
 48        <provider
-48-->[androidx.emoji2:emoji2:1.2.0] C:\Users\kmj74\.gradle\caches\transforms-3\1aadcf4e0f237724308e0370743d8486\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+48-->[androidx.emoji2:emoji2:1.2.0] /Users/handahyeog/.gradle/caches/transforms-3/1aadcf4e0f237724308e0370743d8486/transformed/emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
 49            android:name="androidx.startup.InitializationProvider"
-49-->[androidx.emoji2:emoji2:1.2.0] C:\Users\kmj74\.gradle\caches\transforms-3\1aadcf4e0f237724308e0370743d8486\transformed\emoji2-1.2.0\AndroidManifest.xml:25:13-67
+49-->[androidx.emoji2:emoji2:1.2.0] /Users/handahyeog/.gradle/caches/transforms-3/1aadcf4e0f237724308e0370743d8486/transformed/emoji2-1.2.0/AndroidManifest.xml:25:13-67
 50            android:authorities="com.hdk.subway.androidx-startup"
-50-->[androidx.emoji2:emoji2:1.2.0] C:\Users\kmj74\.gradle\caches\transforms-3\1aadcf4e0f237724308e0370743d8486\transformed\emoji2-1.2.0\AndroidManifest.xml:26:13-68
+50-->[androidx.emoji2:emoji2:1.2.0] /Users/handahyeog/.gradle/caches/transforms-3/1aadcf4e0f237724308e0370743d8486/transformed/emoji2-1.2.0/AndroidManifest.xml:26:13-68
 51            android:exported="false" >
-51-->[androidx.emoji2:emoji2:1.2.0] C:\Users\kmj74\.gradle\caches\transforms-3\1aadcf4e0f237724308e0370743d8486\transformed\emoji2-1.2.0\AndroidManifest.xml:27:13-37
+51-->[androidx.emoji2:emoji2:1.2.0] /Users/handahyeog/.gradle/caches/transforms-3/1aadcf4e0f237724308e0370743d8486/transformed/emoji2-1.2.0/AndroidManifest.xml:27:13-37
 52            <meta-data
-52-->[androidx.emoji2:emoji2:1.2.0] C:\Users\kmj74\.gradle\caches\transforms-3\1aadcf4e0f237724308e0370743d8486\transformed\emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+52-->[androidx.emoji2:emoji2:1.2.0] /Users/handahyeog/.gradle/caches/transforms-3/1aadcf4e0f237724308e0370743d8486/transformed/emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
 53                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-53-->[androidx.emoji2:emoji2:1.2.0] C:\Users\kmj74\.gradle\caches\transforms-3\1aadcf4e0f237724308e0370743d8486\transformed\emoji2-1.2.0\AndroidManifest.xml:30:17-75
+53-->[androidx.emoji2:emoji2:1.2.0] /Users/handahyeog/.gradle/caches/transforms-3/1aadcf4e0f237724308e0370743d8486/transformed/emoji2-1.2.0/AndroidManifest.xml:30:17-75
 54                android:value="androidx.startup" />
-54-->[androidx.emoji2:emoji2:1.2.0] C:\Users\kmj74\.gradle\caches\transforms-3\1aadcf4e0f237724308e0370743d8486\transformed\emoji2-1.2.0\AndroidManifest.xml:31:17-49
+54-->[androidx.emoji2:emoji2:1.2.0] /Users/handahyeog/.gradle/caches/transforms-3/1aadcf4e0f237724308e0370743d8486/transformed/emoji2-1.2.0/AndroidManifest.xml:31:17-49
 55            <meta-data
-55-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\kmj74\.gradle\caches\transforms-3\f7d8f15274dd8b4fe8a5f106a508708e\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
+55-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/handahyeog/.gradle/caches/transforms-3/f7d8f15274dd8b4fe8a5f106a508708e/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:31:13-33:52
 56                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-56-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\kmj74\.gradle\caches\transforms-3\f7d8f15274dd8b4fe8a5f106a508708e\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
+56-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/handahyeog/.gradle/caches/transforms-3/f7d8f15274dd8b4fe8a5f106a508708e/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:32:17-78
 57                android:value="androidx.startup" />
-57-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\kmj74\.gradle\caches\transforms-3\f7d8f15274dd8b4fe8a5f106a508708e\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
+57-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/handahyeog/.gradle/caches/transforms-3/f7d8f15274dd8b4fe8a5f106a508708e/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:33:17-49
 58        </provider>
 59    </application>
 60

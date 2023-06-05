@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -191,9 +192,9 @@ public class TabFragment extends Fragment {
                     e.printStackTrace();
                 }
 
-//                URL url = new URL(serverUrl);
-//                InputStream is = url.openStream();
-                InputStream is = assetManager.open("json/station"); // 이거
+                URL url = new URL(serverUrl);
+                InputStream is = url.openStream();
+//                InputStream is = assetManager.open("json/station"); // 이거
 
                 InputStreamReader isr = new InputStreamReader(is);
 
@@ -222,13 +223,10 @@ public class TabFragment extends Fragment {
                             arvlMsg2 = stationItem.getarvlMsg2();
                             arvlMsg3 = stationItem.getarvlMsg3();
                             arvlCd = stationItem.getarvlCd();
+                            trainLineNm = stationItem.gettrainLineNm();
 
-//                        if(true){
-//                            items1.add(new Item1(trainLineNm, statnNm, btrainSttus, barvlDt, bstatnNm, recptnDt, arvlMsg2, arvlMsg3, arvlCd, subwayList));
-//                        }
-//                        if(true){
-//                            items2.add(new Item2(trainLineNm, statnNm, btrainSttus, barvlDt, bstatnNm, recptnDt, arvlMsg2, arvlMsg3, arvlCd, subwayList));
-//                        }
+                            items1.add(new Item1(trainLineNm, statnNm, btrainSttus, barvlDt, bstatnNm, recptnDt, arvlMsg2, arvlMsg3, arvlCd, subwayList));
+                            items2.add(new Item2(trainLineNm, statnNm, btrainSttus, barvlDt, bstatnNm, recptnDt, arvlMsg2, arvlMsg3, arvlCd, subwayList));
 
                         for(int i = 0; i < dataList.size(); i++){
                                 if(STATN_ID.get(i).equals(statnFid)){
