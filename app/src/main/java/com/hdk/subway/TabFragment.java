@@ -13,6 +13,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +49,9 @@ public class TabFragment extends Fragment {
 
     String line;
 
+    //운행종료 1,2
+    TextView finish1, finish2;
+    //방면 1,2
     TextView line1, line2;
     String stationName;
 
@@ -70,6 +77,7 @@ public class TabFragment extends Fragment {
     }
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -77,6 +85,9 @@ public class TabFragment extends Fragment {
 
         line1 = v.findViewById(R.id.line1);
         line2 = v.findViewById(R.id.line2);
+
+        finish1 = v.findViewById(R.id.finish1);
+        finish2 = v.findViewById(R.id.finish2);
 
         recyclerView1 = v.findViewById(R.id.recyelr1);
         recyclerView2 = v.findViewById(R.id.recyelr2);
@@ -157,9 +168,9 @@ public class TabFragment extends Fragment {
             try {
                 AssetManager assetManager = getActivity().getAssets(); // 이거
 
-//                URL url = new URL(serverUrl);
-//                InputStream is = url.openStream();
-                InputStream is = assetManager.open("json/station"); // 이거
+                URL url = new URL(serverUrl);
+                InputStream is = url.openStream();
+//                InputStream is = assetManager.open("json/station"); // 이거
 
                 InputStreamReader isr = new InputStreamReader(is);
 
@@ -169,61 +180,109 @@ public class TabFragment extends Fragment {
 
                 Gson gson = new Gson();
 
-                Handler handler = new Handler(Looper.getMainLooper());
-
+                if(realtimeArrivalList != null){
                     for (JsonElement element : realtimeArrivalList) {
-                    StationItem stationItem = gson.fromJson(element, StationItem.class);
+                        StationItem stationItem = gson.fromJson(element, StationItem.class);
 
-                    subwayId = stationItem.getsubwayId();
+                        subwayId = stationItem.getsubwayId();
 
-                    statnFid = stationItem.getstatnFid();
-                    statnTid = stationItem.getstatnTid();
+                        statnFid = stationItem.getstatnFid();
+                        statnTid = stationItem.getstatnTid();
 
-                    trainLineNm = stationItem.gettrainLineNm();
+                        trainLineNm = stationItem.gettrainLineNm();
 
-                    if(line.equals(subwayId)){
-                        String[] str = trainLineNm.split(" - ");
-                        String[] next = str[1].split("방면");
-                        go.add(next[0]);
-                    }
-                    statnNm = stationItem.getstatnNm();
-                    btrainSttus = stationItem.getbtrainSttus();
-                    barvlDt = stationItem.getbarvlDt();
-                    bstatnNm = stationItem.getbstatnNm();
-                    recptnDt = stationItem.getrecptnDt();
-                    arvlMsg2 = stationItem.getarvlMsg2();
-                    arvlMsg3 = stationItem.getarvlMsg3();
-                    arvlCd = stationItem.getarvlCd();
+//                        if(line.equals(subwayId)){
+//                            String[] str = trainLineNm.split(" - ");
+//                            String[] next = str[1].split("방면");
+//                            go.add(next[0]);
+//                        }
+                        statnNm = stationItem.getstatnNm();
+                        btrainSttus = stationItem.getbtrainSttus();
+                        barvlDt = stationItem.getbarvlDt();
+                        bstatnNm = stationItem.getbstatnNm();
+                        recptnDt = stationItem.getrecptnDt();
+                        arvlMsg2 = stationItem.getarvlMsg2();
+                        arvlMsg3 = stationItem.getarvlMsg3();
+                        arvlCd = stationItem.getarvlCd();
 
 
-                    if(line.equals(subwayId)) { //호선 분리
-                        if(trainLineNm.contains(go.get(0))){
-                            items1.add(new Item1(trainLineNm, statnNm, btrainSttus, barvlDt, bstatnNm, recptnDt, arvlMsg2, arvlMsg3, arvlCd, subwayList));
-                        }
-                        if(!trainLineNm.contains(go.get(0))){
-                            items2.add(new Item2(trainLineNm, statnNm, btrainSttus, barvlDt, bstatnNm, recptnDt, arvlMsg2, arvlMsg3, arvlCd, subwayList));
+                        if(line.equals(subwayId)) { //호선 분리
+
                             String[] str = trainLineNm.split(" - ");
-                            goline2 = str[1].split("방면");
+                            String[] next = str[1].split("방면");
+                            go.add(next[0]);
 
+                            if(trainLineNm.contains(go.get(0))){
+                                items1.add(new Item1(trainLineNm, statnNm, btrainSttus, barvlDt, bstatnNm, recptnDt, arvlMsg2, arvlMsg3, arvlCd, subwayList));
+                            }
 
-                        }
+                            Handler handler = new Handler(Looper.getMainLooper());
 
-                    }// if....
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if(go.get(0) == null){
+                                        AnimationSet animationSet = new AnimationSet(true);
+                                        animationSet.setInterpolator(new LinearInterpolator());
+                                        animationSet.setRepeatCount(Animation.INFINITE);
+                                        animationSet.setRepeatMode(Animation.REVERSE);
 
-                }// for....
+                                        AlphaAnimation alphaAnimation = new AlphaAnimation(1, 0);
+                                        alphaAnimation.setDuration(1000); // 깜빡임 간격 (밀리초)
+                                        animationSet.addAnimation(alphaAnimation);
+
+                                        finish1.startAnimation(animationSet);
+                                    }else if (goline2 == null){
+                                        AnimationSet animationSet = new AnimationSet(true);
+                                        animationSet.setInterpolator(new LinearInterpolator());
+                                        animationSet.setRepeatCount(Animation.INFINITE);
+                                        animationSet.setRepeatMode(Animation.REVERSE);
+
+                                        AlphaAnimation alphaAnimation = new AlphaAnimation(1, 0);
+                                        alphaAnimation.setDuration(1000); // 깜빡임 간격 (밀리초)
+                                        animationSet.addAnimation(alphaAnimation);
+
+                                        finish2.startAnimation(animationSet);
+                                    }
+                                }
+                            });
+
+                            if(!trainLineNm.contains(go.get(0))){
+                                items2.add(new Item2(trainLineNm, statnNm, btrainSttus, barvlDt, bstatnNm, recptnDt, arvlMsg2, arvlMsg3, arvlCd, subwayList));
+                                String[] str1 = trainLineNm.split(" - ");
+                                goline2 = str1[1].split("방면");
+                            }
+
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if(go.get(0) != null){
+                                        line1.setText(go.get(0) + " 방면");
+                                    }
+                                    if(goline2 != null){
+                                        line2.setText(goline2[0]);
+                                    }
+                                }
+                            });
+
+                        }// if....
+
+                    }// for....
+                }
 
                     getActivity().runOnUiThread(() -> {
-//                        Toast.makeText(getContext(), subwayList, Toast.LENGTH_SHORT).show();
-                        line1.setText(go.get(0) + " 방면");
-                        line2.setText(goline2[0]);
+
+//                        if(realtimeArrivalList != null){
+//                            line1.setText(go.get(0) + " 방면");
+//                            line2.setText(goline2[0]);
+//                        }
+
                         adapter1 = new MyTabRecyclerAdapter1(getContext(), items1);
                         adapter2 = new MyTabRecyclerAdapter2(getContext(), items2);
                         recyclerView1.setAdapter(adapter1);
                         recyclerView2.setAdapter(adapter2);
 
                     });
-
-
 
             } catch (MalformedURLException e) {
                 throw new RuntimeException(e);

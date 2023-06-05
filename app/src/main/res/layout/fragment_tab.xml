@@ -21,32 +21,83 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="4dp"
-            android:text="음봉 방향"
+            android:text="정보를 가져올 수 없음"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:background="#AEADAD"
             />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyelr1"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             android:layout_weight="1"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            />
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/finish1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="운행 종료"
+                    android:textStyle="bold"
+                    android:textSize="35sp"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    />
+
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyelr1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                />
+
+        </LinearLayout>
+
+
 
         <TextView
             android:id="@+id/line2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="4dp"
-            android:text="청량리 방향"
+            android:text="정보를 가져올 수 없음"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:background="#AEADAD"
             />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/finish2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="운행 종료"
+                android:textStyle="bold"
+                android:textSize="35sp"
+                android:gravity="center"
+                android:textColor="#000000"
+                />
+
+        </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyelr2"
@@ -55,6 +106,8 @@
             android:layout_weight="1"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             />
+
+    </LinearLayout>
 
     </LinearLayout>
 
