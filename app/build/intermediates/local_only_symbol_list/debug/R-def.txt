@@ -18,6 +18,8 @@ id clickFragment
 id clock
 id exit
 id favorite
+id finish1
+id finish2
 id imageView
 id information
 id line1

@@ -47,17 +47,19 @@
                     android:textSize="35sp"
                     android:gravity="center"
                     android:textColor="#000000"
+                    android:visibility="invisible"
+                    />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyelr1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     />
 
             </RelativeLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyelr1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                />
 
         </LinearLayout>
 
@@ -95,17 +97,20 @@
                 android:textSize="35sp"
                 android:gravity="center"
                 android:textColor="#000000"
+                android:visibility="invisible"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyelr2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 />
 
         </RelativeLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyelr2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            />
+
 
     </LinearLayout>
 

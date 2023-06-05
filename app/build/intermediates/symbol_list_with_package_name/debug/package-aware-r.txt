@@ -2707,6 +2707,8 @@ id fill
 id fill_horizontal
 id fill_vertical
 id filled
+id finish1
+id finish2
 id fitToContents
 id fixed
 id flip

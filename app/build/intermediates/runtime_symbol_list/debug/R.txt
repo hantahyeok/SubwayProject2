@@ -2706,6 +2706,8 @@ int id fill 0x7f0900bb
 int id fill_horizontal 0x7f0900bc
 int id fill_vertical 0x7f0900bd
 int id filled 0x7f0900be
+int id finish1 0x7f0901f1
+int id finish2 0x7f0901f2
 int id fitToContents 0x7f0900bf
 int id fixed 0x7f0900c0
 int id flip 0x7f0900c1
