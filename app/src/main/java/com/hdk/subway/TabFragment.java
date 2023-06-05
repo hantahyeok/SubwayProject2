@@ -34,6 +34,7 @@ import java.util.List;
 public class TabFragment extends Fragment {
 
     List<String> go = new ArrayList<>();
+    String[] goline2; // 2번째 방향 나타내기
 
     ArrayList<Item1> items1 = new ArrayList<>();
     ArrayList<Item2> items2 = new ArrayList<>();
@@ -170,7 +171,7 @@ public class TabFragment extends Fragment {
 
                 Handler handler = new Handler(Looper.getMainLooper());
 
-                for (JsonElement element : realtimeArrivalList) {
+                    for (JsonElement element : realtimeArrivalList) {
                     StationItem stationItem = gson.fromJson(element, StationItem.class);
 
                     subwayId = stationItem.getsubwayId();
@@ -180,9 +181,11 @@ public class TabFragment extends Fragment {
 
                     trainLineNm = stationItem.gettrainLineNm();
 
-                    String[] str = trainLineNm.split(" - ");
-                    go.add(str[1]);
-
+                    if(line.equals(subwayId)){
+                        String[] str = trainLineNm.split(" - ");
+                        String[] next = str[1].split("방면");
+                        go.add(next[0]);
+                    }
                     statnNm = stationItem.getstatnNm();
                     btrainSttus = stationItem.getbtrainSttus();
                     barvlDt = stationItem.getbarvlDt();
@@ -194,11 +197,16 @@ public class TabFragment extends Fragment {
 
 
                     if(line.equals(subwayId)) { //호선 분리
-//                        if(go.get(0).contains(str[1])){
+                        if(trainLineNm.contains(go.get(0))){
                             items1.add(new Item1(trainLineNm, statnNm, btrainSttus, barvlDt, bstatnNm, recptnDt, arvlMsg2, arvlMsg3, arvlCd, subwayList));
-//                        }else{
+                        }
+                        if(!trainLineNm.contains(go.get(0))){
                             items2.add(new Item2(trainLineNm, statnNm, btrainSttus, barvlDt, bstatnNm, recptnDt, arvlMsg2, arvlMsg3, arvlCd, subwayList));
-//                        }
+                            String[] str = trainLineNm.split(" - ");
+                            goline2 = str[1].split("방면");
+
+
+                        }
 
                     }// if....
 
@@ -206,6 +214,8 @@ public class TabFragment extends Fragment {
 
                     getActivity().runOnUiThread(() -> {
 //                        Toast.makeText(getContext(), subwayList, Toast.LENGTH_SHORT).show();
+                        line1.setText(go.get(0) + " 방면");
+                        line2.setText(goline2[0]);
                         adapter1 = new MyTabRecyclerAdapter1(getContext(), items1);
                         adapter2 = new MyTabRecyclerAdapter2(getContext(), items2);
                         recyclerView1.setAdapter(adapter1);
