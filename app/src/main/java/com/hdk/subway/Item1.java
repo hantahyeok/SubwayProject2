@@ -22,18 +22,13 @@ public class Item1 {
     String arvlCd;
     //연계호선
     String subwayList;
+    //막차
+    String last;
 
-    public Item1(String trainLineNm, String statnNm, String btrainSttus, String barvlDt, String bstatnNm, String recptnDt, String arvlMsg2, String arvlMsg3, String arvlCd, String subwayList){
+    public Item1(String trainLineNm, String btrainSttus, String last){
         this.trainLineNm = trainLineNm;
-        this.statnNm = statnNm;
         this.btrainSttus = btrainSttus;
-        this.barvlDt = barvlDt;
-        this.bstatnNm = bstatnNm;
-        this.recptnDt = recptnDt;
-        this.arvlMsg2 = arvlMsg2;
-        this.arvlMsg3 = arvlMsg3;
-        this.arvlCd = arvlCd;
-        this.subwayList = subwayList;
+        this.last = last;
     }
 
     public Item1(){

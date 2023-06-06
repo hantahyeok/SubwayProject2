@@ -55,7 +55,8 @@ public class TabFragment extends Fragment{
     MyTabRecyclerAdapter2 adapter2;
 
     String line;
-
+    //막차..
+    String last;
     //운행종료 1,2
     TextView finish1, finish2;
     //방면 1,2
@@ -74,8 +75,6 @@ public class TabFragment extends Fragment{
     String arvlMsg3;
     String arvlCd;
     String subwayList;
-    String statnFid;
-    String statnTid;
 
 
     public TabFragment(String stationName, String line){
@@ -193,14 +192,12 @@ public class TabFragment extends Fragment{
 
                         subwayId = stationItem.getsubwayId();
 
-                        statnFid = stationItem.getstatnFid();
-                        statnTid = stationItem.getstatnTid();
-
                         trainLineNm = stationItem.gettrainLineNm();
+
+                        barvlDt = stationItem.getbarvlDt();
 
                         statnNm = stationItem.getstatnNm();
                         btrainSttus = stationItem.getbtrainSttus();
-                        barvlDt = stationItem.getbarvlDt();
                         bstatnNm = stationItem.getbstatnNm();
                         recptnDt = stationItem.getrecptnDt();
                         arvlMsg2 = stationItem.getarvlMsg2();
@@ -212,15 +209,20 @@ public class TabFragment extends Fragment{
 
                             String[] str = trainLineNm.split(" - ");
                             String[] next = str[1].split("방면");
+                            if(trainLineNm.contains("막차")){
+                                last = "막차";
+                            }
                             go.add(next[0]);
 
+                            String finishline = str[0];
+
                             if(trainLineNm.contains(go.get(0))){
-                                items1.add(new Item1(trainLineNm, statnNm, btrainSttus, barvlDt, bstatnNm, recptnDt, arvlMsg2, arvlMsg3, arvlCd, subwayList));
+                                items1.add(new Item1(finishline, btrainSttus, last));
                                 goline1 = ".";
                             }
 
                             if(!trainLineNm.contains(go.get(0))){
-                                items2.add(new Item2(trainLineNm, statnNm, btrainSttus, barvlDt, bstatnNm, recptnDt, arvlMsg2, arvlMsg3, arvlCd, subwayList));
+                                items2.add(new Item2());
                                 String[] str1 = trainLineNm.split(" - ");
                                 goline2 = str1[1].split("방면");
                             }

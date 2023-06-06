@@ -110,10 +110,16 @@
 
         </RelativeLayout>
 
+    </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="vertical"
+            android:background="#807373"
+            />
 
     </LinearLayout>
 
-    </LinearLayout>
 
 </FrameLayout>
