@@ -64,10 +64,6 @@
         "source": "C:\\Users\\kmj74\\.gradle\\daemon\\8.0\\com.hdk.subway.app-main-31:\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.hdk.subway.app-merged_res-29:/layout_fragment_tab.xml.flat",
-        "source": "com.hdk.subway.app-main-31:/layout/fragment_tab.xml"
-    },
-    {
         "merged": "C:\\Users\\kmj74\\.gradle\\daemon\\8.0\\com.hdk.subway.app-merged_res-29:\\drawable_ic_launcher_background.xml.flat",
         "source": "C:\\Users\\kmj74\\.gradle\\daemon\\8.0\\com.hdk.subway.app-main-31:\\drawable\\ic_launcher_background.xml"
     },
@@ -114,5 +110,9 @@
     {
         "merged": "C:\\Users\\kmj74\\.gradle\\daemon\\8.0\\com.hdk.subway.app-merged_res-29:\\font_font.ttf.flat",
         "source": "C:\\Users\\kmj74\\.gradle\\daemon\\8.0\\com.hdk.subway.app-main-31:\\font\\font.ttf"
+    },
+    {
+        "merged": "com.hdk.subway.app-merged_res-29:/layout_recyclerview_item.xml.flat",
+        "source": "com.hdk.subway.app-main-31:/layout/recyclerview_item.xml"
     }
 ]

@@ -190,19 +190,20 @@ public class TabFragment extends Fragment{
                     for (JsonElement element : realtimeArrivalList) {
                         StationItem stationItem = gson.fromJson(element, StationItem.class);
 
+                        //지하철 호선ID
                         subwayId = stationItem.getsubwayId();
-
+                        //도착지 방면
                         trainLineNm = stationItem.gettrainLineNm();
-
-                        barvlDt = stationItem.getbarvlDt();
-
-                        statnNm = stationItem.getstatnNm();
+                        //열차 종류
                         btrainSttus = stationItem.getbtrainSttus();
-                        bstatnNm = stationItem.getbstatnNm();
-                        recptnDt = stationItem.getrecptnDt();
+                        //도착메세지
                         arvlMsg2 = stationItem.getarvlMsg2();
-                        arvlMsg3 = stationItem.getarvlMsg3();
-                        arvlCd = stationItem.getarvlCd();
+                        //도착정보를 생성한 시각
+                        recptnDt = stationItem.getrecptnDt();
+
+
+                        //도착코드 (0:진입, 1:도착, 2:출발, 3:전역출발, 4:전역진입, 5:전역도착, 99:운행중)
+                        arvlCd = stationItem.getarvlCd(); // 아직은 사용 X
 
 
                         if(line.equals(subwayId)) { //호선 분리
@@ -217,12 +218,12 @@ public class TabFragment extends Fragment{
                             String finishline = str[0];
 
                             if(trainLineNm.contains(go.get(0))){
-                                items1.add(new Item1(finishline, btrainSttus, last));
+                                items1.add(new Item1(finishline, btrainSttus, last, arvlMsg2, recptnDt));
                                 goline1 = ".";
                             }
 
                             if(!trainLineNm.contains(go.get(0))){
-                                items2.add(new Item2());
+                                items2.add(new Item2(finishline, btrainSttus, last, arvlMsg2, recptnDt));
                                 String[] str1 = trainLineNm.split(" - ");
                                 goline2 = str1[1].split("방면");
                             }
