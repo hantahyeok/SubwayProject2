@@ -1,5 +1,8 @@
 package com.hdk.subway;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.content.res.AssetManager;
 import android.os.Bundle;
@@ -35,9 +38,13 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TabFragment extends Fragment {
+public class TabFragment extends Fragment{
+
+    Handler handler = new Handler(Looper.getMainLooper());
 
     List<String> go = new ArrayList<>();
+
+    String goline1;
     String[] goline2; // 2번째 방향 나타내기
 
     ArrayList<Item1> items1 = new ArrayList<>();
@@ -191,11 +198,6 @@ public class TabFragment extends Fragment {
 
                         trainLineNm = stationItem.gettrainLineNm();
 
-//                        if(line.equals(subwayId)){
-//                            String[] str = trainLineNm.split(" - ");
-//                            String[] next = str[1].split("방면");
-//                            go.add(next[0]);
-//                        }
                         statnNm = stationItem.getstatnNm();
                         btrainSttus = stationItem.getbtrainSttus();
                         barvlDt = stationItem.getbarvlDt();
@@ -214,10 +216,8 @@ public class TabFragment extends Fragment {
 
                             if(trainLineNm.contains(go.get(0))){
                                 items1.add(new Item1(trainLineNm, statnNm, btrainSttus, barvlDt, bstatnNm, recptnDt, arvlMsg2, arvlMsg3, arvlCd, subwayList));
+                                goline1 = ".";
                             }
-
-                            Handler handler = new Handler(Looper.getMainLooper());
-
 
                             if(!trainLineNm.contains(go.get(0))){
                                 items2.add(new Item2(trainLineNm, statnNm, btrainSttus, barvlDt, bstatnNm, recptnDt, arvlMsg2, arvlMsg3, arvlCd, subwayList));
@@ -245,33 +245,11 @@ public class TabFragment extends Fragment {
 
                     getActivity().runOnUiThread(() -> {
 
-                        if(go != null){
-//                            finish1.setVisibility(View.VISIBLE);
-
-                            AnimationSet animationSet = new AnimationSet(true);
-                            animationSet.setInterpolator(new LinearInterpolator());
-                            animationSet.setRepeatCount(Animation.INFINITE);
-                            animationSet.setRepeatMode(Animation.REVERSE);
-
-                            AlphaAnimation alphaAnimation = new AlphaAnimation(1, 0);
-                            alphaAnimation.setDuration(1000); // 깜빡임 간격 (밀리초)
-                            animationSet.addAnimation(alphaAnimation);
-
-                            finish1.startAnimation(animationSet);
+                        if(goline1 == null){
+                            startAnimation1();
                         }
-                        if (goline2 == null){
-//                            finish2.setVisibility(View.VISIBLE);
-
-                            AnimationSet animationSet = new AnimationSet(true);
-                            animationSet.setInterpolator(new LinearInterpolator());
-                            animationSet.setRepeatCount(Animation.INFINITE);
-//                            animationSet.setRepeatMode(Animation.REVERSE);
-
-                            AlphaAnimation alphaAnimation = new AlphaAnimation(1, 0);
-                            alphaAnimation.setDuration(1000); // 깜빡임 간격 (밀리초)
-                            animationSet.addAnimation(alphaAnimation);
-
-                            finish2.startAnimation(animationSet);
+                        if(goline2 == null){
+                            startAnimation2();
                         }
 
                         adapter1 = new MyTabRecyclerAdapter1(getContext(), items1);
@@ -288,6 +266,60 @@ public class TabFragment extends Fragment {
             }
 
 
+        }// Thread run...
+
+        void startAnimation1(){
+            finish1.setVisibility(View.VISIBLE);
+            finish1.setAlpha(1.0f);
+
+            // 값 애니메이터를 생성합니다.
+            ValueAnimator animator = ValueAnimator.ofFloat(1.0f, 0.0f, 1.0f);
+            animator.setDuration(3000); // 애니메이션 지속 시간 (2초)
+            animator.setRepeatCount(ValueAnimator.INFINITE); // 무한 반복 설정
+            animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator animation) {
+                    // 애니메이션 갱신 시마다 텍스트의 알파 값을 설정합니다.
+                    float alpha = (float) animation.getAnimatedValue();
+                    finish1.setAlpha(alpha);
+                }
+            });
+            animator.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationRepeat(Animator animation) {
+                    // 애니메이션이 반복될 때마다 초기 알파 값을 설정합니다.
+                    finish1.setAlpha(1.0f);
+                }
+            });
+
+            animator.start(); // 애니메이션을 시작합니다.
+        }
+
+        void startAnimation2(){
+            finish2.setVisibility(View.VISIBLE);
+            finish2.setAlpha(1.0f);
+
+            // 값 애니메이터를 생성합니다.
+            ValueAnimator animator = ValueAnimator.ofFloat(1.0f, 0.0f, 1.0f);
+            animator.setDuration(3000); // 애니메이션 지속 시간 (2초)
+            animator.setRepeatCount(ValueAnimator.INFINITE); // 무한 반복 설정
+            animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator animation) {
+                    // 애니메이션 갱신 시마다 텍스트의 알파 값을 설정합니다.
+                    float alpha = (float) animation.getAnimatedValue();
+                    finish2.setAlpha(alpha);
+                }
+            });
+            animator.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationRepeat(Animator animation) {
+                    // 애니메이션이 반복될 때마다 초기 알파 값을 설정합니다.
+                    finish2.setAlpha(1.0f);
+                }
+            });
+
+            animator.start(); // 애니메이션을 시작합니다.
         }
     }
 

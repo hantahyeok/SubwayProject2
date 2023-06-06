@@ -62,7 +62,6 @@ public class MyTabRecyclerAdapter1 extends RecyclerView.Adapter {
         public VH(@NonNull View itemView) {
             super(itemView);
 
-            tv1= itemView.findViewById(R.id.tv1);
             tv2= itemView.findViewById(R.id.tv2);
             tv3= itemView.findViewById(R.id.tv3);
             tv4= itemView.findViewById(R.id.tv4);
