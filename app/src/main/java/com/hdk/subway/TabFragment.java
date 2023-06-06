@@ -218,35 +218,6 @@ public class TabFragment extends Fragment {
 
                             Handler handler = new Handler(Looper.getMainLooper());
 
-                            // todo : 여기서부터
-//                            handler.post(new Runnable() {
-//                                @Override
-//                                public void run() {
-//                                    if(go.get(0) == null){
-//                                        AnimationSet animationSet = new AnimationSet(true);
-//                                        animationSet.setInterpolator(new LinearInterpolator());
-//                                        animationSet.setRepeatCount(Animation.INFINITE);
-//                                        animationSet.setRepeatMode(Animation.REVERSE);
-//
-//                                        AlphaAnimation alphaAnimation = new AlphaAnimation(1, 0);
-//                                        alphaAnimation.setDuration(1000); // 깜빡임 간격 (밀리초)
-//                                        animationSet.addAnimation(alphaAnimation);
-//
-//                                        finish1.startAnimation(animationSet);
-//                                    }else if (goline2 == null){
-//                                        AnimationSet animationSet = new AnimationSet(true);
-//                                        animationSet.setInterpolator(new LinearInterpolator());
-//                                        animationSet.setRepeatCount(Animation.INFINITE);
-//                                        animationSet.setRepeatMode(Animation.REVERSE);
-//
-//                                        AlphaAnimation alphaAnimation = new AlphaAnimation(1, 0);
-//                                        alphaAnimation.setDuration(1000); // 깜빡임 간격 (밀리초)
-//                                        animationSet.addAnimation(alphaAnimation);
-//
-//                                        finish2.startAnimation(animationSet);
-//                                    }
-//                                }
-//                            });
 
                             if(!trainLineNm.contains(go.get(0))){
                                 items2.add(new Item2(trainLineNm, statnNm, btrainSttus, barvlDt, bstatnNm, recptnDt, arvlMsg2, arvlMsg3, arvlCd, subwayList));
@@ -261,8 +232,9 @@ public class TabFragment extends Fragment {
                                         line1.setText(go.get(0) + " 방면");
                                     }
                                     if(goline2 != null){
-                                        line2.setText(goline2[0]);
+                                        line2.setText(goline2[0] + " 방면");
                                     }
+
                                 }
                             });
 
@@ -273,10 +245,34 @@ public class TabFragment extends Fragment {
 
                     getActivity().runOnUiThread(() -> {
 
-//                        if(realtimeArrivalList != null){
-//                            line1.setText(go.get(0) + " 방면");
-//                            line2.setText(goline2[0]);
-//                        }
+                        if(go != null){
+//                            finish1.setVisibility(View.VISIBLE);
+
+                            AnimationSet animationSet = new AnimationSet(true);
+                            animationSet.setInterpolator(new LinearInterpolator());
+                            animationSet.setRepeatCount(Animation.INFINITE);
+                            animationSet.setRepeatMode(Animation.REVERSE);
+
+                            AlphaAnimation alphaAnimation = new AlphaAnimation(1, 0);
+                            alphaAnimation.setDuration(1000); // 깜빡임 간격 (밀리초)
+                            animationSet.addAnimation(alphaAnimation);
+
+                            finish1.startAnimation(animationSet);
+                        }
+                        if (goline2 == null){
+//                            finish2.setVisibility(View.VISIBLE);
+
+                            AnimationSet animationSet = new AnimationSet(true);
+                            animationSet.setInterpolator(new LinearInterpolator());
+                            animationSet.setRepeatCount(Animation.INFINITE);
+//                            animationSet.setRepeatMode(Animation.REVERSE);
+
+                            AlphaAnimation alphaAnimation = new AlphaAnimation(1, 0);
+                            alphaAnimation.setDuration(1000); // 깜빡임 간격 (밀리초)
+                            animationSet.addAnimation(alphaAnimation);
+
+                            finish2.startAnimation(animationSet);
+                        }
 
                         adapter1 = new MyTabRecyclerAdapter1(getContext(), items1);
                         adapter2 = new MyTabRecyclerAdapter2(getContext(), items2);
