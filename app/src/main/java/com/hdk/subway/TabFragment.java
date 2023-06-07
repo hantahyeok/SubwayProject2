@@ -46,9 +46,6 @@ public class TabFragment extends Fragment{
 
     List<String> go = new ArrayList<>();
 
-    String goline1;
-    String[] goline2; // 2번째 방향 나타내기
-
     ArrayList<Item1> items1 = new ArrayList<>();
     ArrayList<Item2> items2 = new ArrayList<>();
 
@@ -154,16 +151,19 @@ public class TabFragment extends Fragment{
 
 
         DataSubwayThread dataSubwayThread = new DataSubwayThread();
-//        dataSubwayThread.start();
-        Timer time = new Timer();
-        time.scheduleAtFixedRate(dataSubwayThread,0,10000);
+        dataSubwayThread.start();
+//        Timer time = new Timer();
+//        time.scheduleAtFixedRate(dataSubwayThread,0,10000);
 
         return v;
     }
 
-    class DataSubwayThread extends TimerTask {
+    class DataSubwayThread extends Thread {
         // /옆에 역명 넣기
         String serverUrl = "http://swopenapi.seoul.go.kr/api/subway/416678437474616837356359705349/json/realtimeStationArrival/0/100/" + stationName;
+
+        String goline1 = "";
+        String[] goline2; // 2번째 방향 나타내기
 
         @SuppressLint("SuspiciousIndentation")
         @Override
@@ -178,11 +178,11 @@ public class TabFragment extends Fragment{
                     }
                 });
 
-//                AssetManager assetManager = getActivity().getAssets(); // 이거
+                AssetManager assetManager = getActivity().getAssets(); // 이거
+                InputStream is = assetManager.open("json/station"); // 이거
 
                 URL url = new URL(serverUrl);
-                InputStream is = url.openStream();
-//                InputStream is = assetManager.open("json/station"); // 이거
+//                InputStream is = url.openStream();
 
                 InputStreamReader isr = new InputStreamReader(is);
 
@@ -235,38 +235,23 @@ public class TabFragment extends Fragment{
                                 goline2 = str1[1].split("방면");
                             }
 
-                            handler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    if(go.get(0) != null){
-                                        line1.setText(go.get(0) + " 방면");
-                                    }
-                                    if(goline2 != null){
-                                        line2.setText(goline2[0] + " 방면");
-                                    }
-
-                                }
-                            });
-
-                            getActivity().runOnUiThread(() -> {
-
-                                if(goline1 == null){
-                                    startAnimation1();
-                                }
-                                if(goline2 == null){
-                                    startAnimation2();
-                                }
-
-                                adapter1 = new MyTabRecyclerAdapter1(getContext(), items1);
-                                adapter2 = new MyTabRecyclerAdapter2(getContext(), items2);
-                                recyclerView1.setAdapter(adapter1);
-                                recyclerView2.setAdapter(adapter2);
-
-                            });
+//                            handler.post(new Runnable() {
+//                                @Override
+//                                public void run() {
+//                                    if(go.get(0) != null){
+//                                        line1.setText(go.get(0) + " 방면");
+//                                    }
+//                                    if(goline2 != null){
+//                                        line2.setText(goline2[0] + " 방면");
+//                                    }
+//
+//                                }
+//                            });
 
                         }// if....
 
                     }// for....
+
                 }
 
             } catch (MalformedURLException e) {
@@ -274,6 +259,22 @@ public class TabFragment extends Fragment{
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+
+            getActivity().runOnUiThread(() -> {
+
+//                if(goline1 == null){
+//                    startAnimation1();
+//                }
+//                if(goline2 == null){
+//                    startAnimation2();
+//                }
+
+                adapter1 = new MyTabRecyclerAdapter1(getContext(), items1);
+                adapter2 = new MyTabRecyclerAdapter2(getContext(), items2);
+                recyclerView1.setAdapter(adapter1);
+                recyclerView2.setAdapter(adapter2);
+
+            });
 
 
         }// Thread run...
