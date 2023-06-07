@@ -5,9 +5,9 @@
     android:layout_width="400dp"
     android:layout_height="wrap_content"
     android:elevation="16dp"
-    android:visibility="invisible"
     app:cardCornerRadius="16dp"
     app:strokeColor="@color/black"
+    android:visibility="invisible"
     app:strokeWidth="2dp">
 
     <LinearLayout

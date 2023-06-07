@@ -37,6 +37,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class TabFragment extends Fragment{
 
@@ -66,16 +68,10 @@ public class TabFragment extends Fragment{
     String subwayId;
 
     String trainLineNm;
-    String statnNm;
     String btrainSttus;
-    String barvlDt;
-    String bstatnNm;
     String recptnDt;
     String arvlMsg2;
-    String arvlMsg3;
     String arvlCd;
-    String subwayList;
-
 
     public TabFragment(String stationName, String line){
         this.stationName = stationName;
@@ -158,13 +154,14 @@ public class TabFragment extends Fragment{
 
 
         DataSubwayThread dataSubwayThread = new DataSubwayThread();
-        dataSubwayThread.start();
+//        dataSubwayThread.start();
+        Timer time = new Timer();
+        time.scheduleAtFixedRate(dataSubwayThread,0,10000);
 
         return v;
     }
 
-    class DataSubwayThread extends Thread{
-
+    class DataSubwayThread extends TimerTask {
         // /옆에 역명 넣기
         String serverUrl = "http://swopenapi.seoul.go.kr/api/subway/416678437474616837356359705349/json/realtimeStationArrival/0/100/" + stationName;
 
@@ -172,7 +169,16 @@ public class TabFragment extends Fragment{
         @Override
         public void run() {
             try {
-                AssetManager assetManager = getActivity().getAssets(); // 이거
+
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        items1.removeAll(items1);
+                        items2.removeAll(items2);
+                    }
+                });
+
+//                AssetManager assetManager = getActivity().getAssets(); // 이거
 
                 URL url = new URL(serverUrl);
                 InputStream is = url.openStream();
@@ -204,6 +210,7 @@ public class TabFragment extends Fragment{
 
                         //도착코드 (0:진입, 1:도착, 2:출발, 3:전역출발, 4:전역진입, 5:전역도착, 99:운행중)
                         arvlCd = stationItem.getarvlCd(); // 아직은 사용 X
+
 
 
                         if(line.equals(subwayId)) { //호선 분리
@@ -241,26 +248,26 @@ public class TabFragment extends Fragment{
                                 }
                             });
 
+                            getActivity().runOnUiThread(() -> {
+
+                                if(goline1 == null){
+                                    startAnimation1();
+                                }
+                                if(goline2 == null){
+                                    startAnimation2();
+                                }
+
+                                adapter1 = new MyTabRecyclerAdapter1(getContext(), items1);
+                                adapter2 = new MyTabRecyclerAdapter2(getContext(), items2);
+                                recyclerView1.setAdapter(adapter1);
+                                recyclerView2.setAdapter(adapter2);
+
+                            });
+
                         }// if....
 
                     }// for....
                 }
-
-                    getActivity().runOnUiThread(() -> {
-
-                        if(goline1 == null){
-                            startAnimation1();
-                        }
-                        if(goline2 == null){
-                            startAnimation2();
-                        }
-
-                        adapter1 = new MyTabRecyclerAdapter1(getContext(), items1);
-                        adapter2 = new MyTabRecyclerAdapter2(getContext(), items2);
-                        recyclerView1.setAdapter(adapter1);
-                        recyclerView2.setAdapter(adapter2);
-
-                    });
 
             } catch (MalformedURLException e) {
                 throw new RuntimeException(e);
