@@ -14,6 +14,7 @@ public class Item1 {
     String last;
 
     public Item1(String trainLineNm, String btrainSttus, String last, String arvlMsg2, String recptnDt){
+
         this.trainLineNm = trainLineNm;
         this.btrainSttus = btrainSttus;
         this.last = last;

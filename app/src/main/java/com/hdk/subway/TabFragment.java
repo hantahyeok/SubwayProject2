@@ -42,6 +42,8 @@ import java.util.TimerTask;
 
 public class TabFragment extends Fragment{
 
+    Timer time;
+
     Handler handler = new Handler(Looper.getMainLooper());
 
     List<String> go = new ArrayList<>();
@@ -151,18 +153,23 @@ public class TabFragment extends Fragment{
 
         DataSubwayThread dataSubwayThread = new DataSubwayThread();
 //        dataSubwayThread.start();
-        Timer time = new Timer();
+        time = new Timer();
 
         time.scheduleAtFixedRate(dataSubwayThread,0,10000);
 
         return v;
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        time.cancel();
+    }
+
     class DataSubwayThread extends TimerTask {
         // /옆에 역명 넣기
         String serverUrl = "http://swopenapi.seoul.go.kr/api/subway/416678437474616837356359705349/json/realtimeStationArrival/0/100/" + stationName;
 
-        String goline1 = "";
         String[] goline2; // 2번째 방향 나타내기
 
         @SuppressLint("SuspiciousIndentation")
@@ -217,6 +224,30 @@ public class TabFragment extends Fragment{
                             go.add(next[0]);
 
                             String finishline = str[0];
+
+                            ///////////////////////////////////// 24시간제 -> 12시간제로 변환
+                            String time = recptnDt.substring(11);
+                            String[] timeParts = time.split(":"); // 시간, 분, 초를 분리
+                            int hour = Integer.parseInt(timeParts[0]);
+                            int minute = Integer.parseInt(timeParts[1]);
+                            int second = Integer.parseInt(timeParts[2]);
+
+                            String formattedTime;
+
+                            if (hour < 12) {
+                                hour = 12;
+                                formattedTime = String.format("오후 %d시 %d분 %d초", hour, minute, second);
+                            } else {
+                                if (hour == 12) {
+                                    formattedTime = String.format("오전 %d시 %d분 %d초", hour, minute, second);
+                                } else {
+                                    hour -= 12;
+                                    formattedTime = String.format("오전 %d시 %d분 %d초 PM", hour, minute, second);
+                                }
+                            }
+
+                            recptnDt = formattedTime;
+                            ///////////////////////////////////// 24시간제 -> 12시간제로 변환
 
                             if(trainLineNm.contains(go.get(0))){
                                 items1.add(new Item1(finishline, btrainSttus, last, arvlMsg2, recptnDt));
