@@ -3,6 +3,7 @@ local
 color black
 color brand
 color brand2
+color ic_launcher_background
 color white
 drawable ballot
 drawable baseline_arrow_back_24

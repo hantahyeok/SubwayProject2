@@ -75,7 +75,6 @@ public class TabFragment extends Fragment{
         this.line = line;
     }
 
-
     @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -151,14 +150,15 @@ public class TabFragment extends Fragment{
 
 
         DataSubwayThread dataSubwayThread = new DataSubwayThread();
-        dataSubwayThread.start();
-//        Timer time = new Timer();
-//        time.scheduleAtFixedRate(dataSubwayThread,0,10000);
+//        dataSubwayThread.start();
+        Timer time = new Timer();
+
+        time.scheduleAtFixedRate(dataSubwayThread,0,10000);
 
         return v;
     }
 
-    class DataSubwayThread extends Thread {
+    class DataSubwayThread extends TimerTask {
         // /옆에 역명 넣기
         String serverUrl = "http://swopenapi.seoul.go.kr/api/subway/416678437474616837356359705349/json/realtimeStationArrival/0/100/" + stationName;
 
@@ -170,19 +170,11 @@ public class TabFragment extends Fragment{
         public void run() {
             try {
 
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        items1.removeAll(items1);
-                        items2.removeAll(items2);
-                    }
-                });
-
-                AssetManager assetManager = getActivity().getAssets(); // 이거
-                InputStream is = assetManager.open("json/station"); // 이거
+//                AssetManager assetManager = getActivity().getAssets(); // 이거
+//                InputStream is = assetManager.open("json/station"); // 이거
 
                 URL url = new URL(serverUrl);
-//                InputStream is = url.openStream();
+                InputStream is = url.openStream();
 
                 InputStreamReader isr = new InputStreamReader(is);
 
@@ -191,6 +183,10 @@ public class TabFragment extends Fragment{
                 JsonArray realtimeArrivalList = jsonObject.getAsJsonArray("realtimeArrivalList");
 
                 Gson gson = new Gson();
+
+                go.clear();
+                items1.clear();
+                items2.clear();
 
                 if(realtimeArrivalList != null){
                     for (JsonElement element : realtimeArrivalList) {
@@ -211,8 +207,6 @@ public class TabFragment extends Fragment{
                         //도착코드 (0:진입, 1:도착, 2:출발, 3:전역출발, 4:전역진입, 5:전역도착, 99:운행중)
                         arvlCd = stationItem.getarvlCd(); // 아직은 사용 X
 
-
-
                         if(line.equals(subwayId)) { //호선 분리
 
                             String[] str = trainLineNm.split(" - ");
@@ -226,7 +220,6 @@ public class TabFragment extends Fragment{
 
                             if(trainLineNm.contains(go.get(0))){
                                 items1.add(new Item1(finishline, btrainSttus, last, arvlMsg2, recptnDt));
-                                goline1 = ".";
                             }
 
                             if(!trainLineNm.contains(go.get(0))){
@@ -235,23 +228,22 @@ public class TabFragment extends Fragment{
                                 goline2 = str1[1].split("방면");
                             }
 
-//                            handler.post(new Runnable() {
-//                                @Override
-//                                public void run() {
-//                                    if(go.get(0) != null){
-//                                        line1.setText(go.get(0) + " 방면");
-//                                    }
-//                                    if(goline2 != null){
-//                                        line2.setText(goline2[0] + " 방면");
-//                                    }
-//
-//                                }
-//                            });
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if(go.get(0) != null){
+                                        line1.setText(go.get(0) + " 방면");
+                                    }
+                                    if(goline2 != null){
+                                        line2.setText(goline2[0] + " 방면");
+                                    }
+
+                                }
+                            });
 
                         }// if....
 
                     }// for....
-
                 }
 
             } catch (MalformedURLException e) {
@@ -262,12 +254,12 @@ public class TabFragment extends Fragment{
 
             getActivity().runOnUiThread(() -> {
 
-//                if(goline1 == null){
-//                    startAnimation1();
-//                }
-//                if(goline2 == null){
-//                    startAnimation2();
-//                }
+                if(items1.isEmpty()){
+                    startAnimation1();
+                }
+                if(items2.isEmpty()){
+                    startAnimation2();
+                }
 
                 adapter1 = new MyTabRecyclerAdapter1(getContext(), items1);
                 adapter2 = new MyTabRecyclerAdapter2(getContext(), items2);
