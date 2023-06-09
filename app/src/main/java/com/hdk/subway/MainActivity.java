@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.graphics.PointF;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -30,11 +31,18 @@ public class MainActivity extends AppCompatActivity {
         imageView.setImage(ImageSource.resource(R.drawable.subwayway));
         imageView.setMaxScale(4f);
 
+//        안됨
+//        imageView.setMinScale(0.5f);
+//        float scale = 2.0f;
+//        PointF center = new PointF(0.5f, 0.5f);
+//        imageView.animateScaleAndCenter(scale, center);
+
+
         Cursor c;
         SubwayDatabaseHelper myDbHelper = new SubwayDatabaseHelper(MainActivity.this); // Reading SQLite database.
         try {
             myDbHelper.createDataBase();
-    } catch (IOException ioe) {
+        } catch (IOException ioe) {
             throw new Error("Unable to create database");
         }
         try {

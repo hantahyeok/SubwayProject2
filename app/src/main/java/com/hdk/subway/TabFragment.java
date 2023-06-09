@@ -42,6 +42,8 @@ import java.util.TimerTask;
 
 public class TabFragment extends Fragment{
 
+    TextView colorgreen;
+
     Timer time;
 
     Handler handler = new Handler(Looper.getMainLooper());
@@ -91,6 +93,8 @@ public class TabFragment extends Fragment{
 
         recyclerView1 = v.findViewById(R.id.recyelr1);
         recyclerView2 = v.findViewById(R.id.recyelr2);
+
+        colorgreen = v.findViewById(R.id.arvlMsg2);
 
             switch(line) {
                 case "01호선":
@@ -210,6 +214,11 @@ public class TabFragment extends Fragment{
                         //도착정보를 생성한 시각
                         recptnDt = stationItem.getrecptnDt();
 
+                        //진입이라는 글씨는 초록색으로
+//                        if(arvlMsg2.contains("진입")){
+//                            colorgreen.setTextColor();
+//                        }
+
 
                         //도착코드 (0:진입, 1:도착, 2:출발, 3:전역출발, 4:전역진입, 5:전역도착, 99:운행중)
                         arvlCd = stationItem.getarvlCd(); // 아직은 사용 X
@@ -242,7 +251,7 @@ public class TabFragment extends Fragment{
                                     formattedTime = String.format("오전 %d시 %d분 %d초", hour, minute, second);
                                 } else {
                                     hour -= 12;
-                                    formattedTime = String.format("오전 %d시 %d분 %d초 PM", hour, minute, second);
+                                    formattedTime = String.format("오후 %d시 %d분 %d초", hour, minute, second);
                                 }
                             }
 
