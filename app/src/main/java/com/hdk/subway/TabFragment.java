@@ -244,7 +244,6 @@ public class TabFragment extends Fragment{
                             String formattedTime;
 
                             if (hour < 12) {
-                                hour = 12;
                                 formattedTime = String.format("오후 %d시 %d분 %d초", hour, minute, second);
                             } else {
                                 if (hour == 12) {
