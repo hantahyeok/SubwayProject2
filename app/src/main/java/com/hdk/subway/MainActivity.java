@@ -8,6 +8,7 @@ import android.database.SQLException;
 import android.graphics.PointF;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.DragEvent;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -91,9 +92,15 @@ public class MainActivity extends AppCompatActivity {
         imageView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_MOVE:
+                        findViewById(R.id.clickFragment).setVisibility(View.INVISIBLE);
+                        break;
+                }
                 return gestureDetector.onTouchEvent(event);
             }
         });
 
-    }
+
+    }// onCreate...
 }

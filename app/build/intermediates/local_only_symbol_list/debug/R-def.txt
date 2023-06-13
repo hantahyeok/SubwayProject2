@@ -34,6 +34,7 @@ id pager
 id recptnDt
 id recyelr1
 id recyelr2
+id searchView
 id tabbar
 id toolbar
 id trainLineNm
