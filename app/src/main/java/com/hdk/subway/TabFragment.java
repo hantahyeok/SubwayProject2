@@ -35,7 +35,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -235,26 +239,19 @@ public class TabFragment extends Fragment{
                             String finishline = str[0];
 
                             ///////////////////////////////////// 24시간제 -> 12시간제로 변환
-                            String time = recptnDt.substring(11);
-                            String[] timeParts = time.split(":"); // 시간, 분, 초를 분리
-                            int hour = Integer.parseInt(timeParts[0]);
-                            int minute = Integer.parseInt(timeParts[1]);
-                            int second = Integer.parseInt(timeParts[2]);
+                            String inputTime = recptnDt;
+                            SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                            SimpleDateFormat outputFormat = new SimpleDateFormat("a h시 mm분 ss초");
 
-                            String formattedTime;
-
-                            if (hour < 12) {
-                                formattedTime = String.format("오후 %d시 %d분 %d초", hour, minute, second);
-                            } else {
-                                if (hour == 12) {
-                                    formattedTime = String.format("오전 %d시 %d분 %d초", hour, minute, second);
-                                } else {
-                                    hour -= 12;
-                                    formattedTime = String.format("오후 %d시 %d분 %d초", hour, minute, second);
-                                }
+                            try {
+                                Date date = inputFormat.parse(inputTime);
+                                String outputTime = outputFormat.format(date);
+                                recptnDt = outputTime;
+                            } catch (ParseException e) {
+                                e.printStackTrace();
                             }
 
-                            recptnDt = formattedTime;
+
                             ///////////////////////////////////// 24시간제 -> 12시간제로 변환
 
                             if(trainLineNm.contains(go.get(0))){

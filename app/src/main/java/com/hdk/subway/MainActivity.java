@@ -2,18 +2,13 @@ package com.hdk.subway;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.graphics.PointF;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.DragEvent;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.davemorrissey.labs.subscaleview.ImageSource;
@@ -30,14 +25,10 @@ public class MainActivity extends AppCompatActivity {
 
         SubsamplingScaleImageView imageView = (SubsamplingScaleImageView)findViewById(R.id.imageView);
         imageView.setImage(ImageSource.resource(R.drawable.subwayway));
+//        imageView.setMinimumScaleType(SubsamplingScaleImageView.SCALE_TYPE_CENTER_INSIDE);
+//        imageView.setMinScale(SubsamplingScaleImageView.SCALE_TYPE_CENTER_CROP);
+
         imageView.setMaxScale(4f);
-
-//        안됨
-//        imageView.setMinScale(0.5f);
-//        float scale = 2.0f;
-//        PointF center = new PointF(0.5f, 0.5f);
-//        imageView.animateScaleAndCenter(scale, center);
-
 
         Cursor c;
         SubwayDatabaseHelper myDbHelper = new SubwayDatabaseHelper(MainActivity.this); // Reading SQLite database.
@@ -57,9 +48,14 @@ public class MainActivity extends AppCompatActivity {
         //Refer to ID value.
         final GestureDetector gestureDetector = new GestureDetector(this, new GestureDetector.SimpleOnGestureListener() { // gesture 디텍팅으로 지하철 위치 읽기
             @Override
-            public boolean onSingleTapUp(MotionEvent ev) {
+            public boolean onSingleTapUp(MotionEvent event) {
                 if (imageView.isReady()) {
-                    PointF sCoord = imageView.viewToSourceCoord(ev.getX(), ev.getY());
+
+                    PointF sCoord = imageView.viewToSourceCoord(event.getX(), event.getY());
+
+                    imageView.animateCenter(new PointF(sCoord.x, sCoord.y)).start();
+
+
                     int x_cor = (int) sCoord.x;
                     int y_cor = (int) sCoord.y;
 
@@ -74,6 +70,10 @@ public class MainActivity extends AppCompatActivity {
                                 MySingleton singleton = MySingleton.getInstance();
                                 singleton.setData(targetStation);
 
+                                //화면 클릭시 좌표를 중심점으로 이동
+                                PointF center = imageView.viewToSourceCoord(event.getX(), event.getY());
+                                imageView.animateCenter(new PointF(center.x, center.y)).start();
+
                                 Toast.makeText(MainActivity.this, targetStation, Toast.LENGTH_SHORT).show();
                             } // send Station Name (column 1)
 
@@ -85,13 +85,14 @@ public class MainActivity extends AppCompatActivity {
                 }
 
 
-                return super.onSingleTapUp(ev);
+                return super.onSingleTapUp(event);
             }
         });
 
         imageView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+//                imageView.set
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_MOVE:
                         findViewById(R.id.clickFragment).setVisibility(View.INVISIBLE);
