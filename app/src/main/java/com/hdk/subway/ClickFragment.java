@@ -20,14 +20,14 @@ public class ClickFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_click, container, false);
 
         clock = v.findViewById(R.id.clock);
-        exit = v.findViewById(R.id.exit);
-        information = v.findViewById(R.id.information);
-        favorite = v.findViewById(R.id.favorite);
+//        exit = v.findViewById(R.id.exit);
+//        information = v.findViewById(R.id.information);
+//        favorite = v.findViewById(R.id.favorite);
 
         clock();
-        exit();
-        information();
-        favorite();
+//        exit();
+//        information();
+//        favorite();
 
 
         return v;

@@ -2700,12 +2700,10 @@ id end
 id endToStart
 id enterAlways
 id enterAlwaysCollapsed
-id exit
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
 id fade
-id favorite
 id fill
 id fill_horizontal
 id fill_vertical
@@ -2744,7 +2742,6 @@ id imageView
 id immediateStop
 id included
 id info
-id information
 id invisible
 id inward
 id italic
@@ -2884,7 +2881,6 @@ id scrollIndicatorDown
 id scrollIndicatorUp
 id scrollView
 id scrollable
-id searchView
 id search_badge
 id search_bar
 id search_button

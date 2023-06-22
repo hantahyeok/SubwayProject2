@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class MyTabRecyclerAdapter1 extends RecyclerView.Adapter {
+public class  MyTabRecyclerAdapter1 extends RecyclerView.Adapter {
 
     Context context;
     ArrayList<Item1> items;

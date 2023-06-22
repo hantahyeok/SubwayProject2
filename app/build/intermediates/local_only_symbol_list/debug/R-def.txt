@@ -19,12 +19,9 @@ id btrainSttus
 id click
 id clickFragment
 id clock
-id exit
-id favorite
 id finish1
 id finish2
 id imageView
-id information
 id last
 id lastTime
 id line1
@@ -34,7 +31,6 @@ id pager
 id recptnDt
 id recyelr1
 id recyelr2
-id searchView
 id tabbar
 id toolbar
 id trainLineNm

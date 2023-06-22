@@ -16,17 +16,9 @@
     <fragment
         android:id="@+id/clickFragment"
         android:name="com.hdk.subway.ClickFragment"
-        android:layout_width="match_parent"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        />
-
-    <SearchView
-        android:id="@+id/searchView"
-        android:layout_alignParentTop="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
-
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="240dp"/>
 
 </RelativeLayout>
