@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.hdk.subway.app-mergeDebugResources-27:/values-en-rCA/values-en-rCA.xml",
+            "outputFile": "com.hdk.subway.app-mergeDebugResources-42:/values-en-rCA/values-en-rCA.xml",
             "map": [
                 {
                     "source": "/Users/handahyeog/.gradle/caches/transforms-3/e823a5dda738fb7207ec40a9ecdd8129/transformed/appcompat-1.6.1/res/values-en-rCA/values-en-rCA.xml",

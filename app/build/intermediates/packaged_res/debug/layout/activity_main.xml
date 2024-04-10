@@ -7,11 +7,33 @@
     tools:context=".MainActivity">
 
 
+
+
     <com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />
+
+    <LinearLayout
+        android:id="@+id/li"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/brand"
+        >
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="왕십리역"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            android:fontFamily="@font/font"
+            />
+
+    </LinearLayout>
 
     <fragment
         android:id="@+id/clickFragment"
@@ -20,5 +42,19 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="240dp"/>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fab"
+        android:text="역 검색"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="12dp"
+        android:layout_width="115dp"
+        android:layout_height="wrap_content"
+        app:icon="@drawable/search"
+        app:iconSize="20dp"
+        android:backgroundTint="#ECE9E9"
+        />
 
 </RelativeLayout>
