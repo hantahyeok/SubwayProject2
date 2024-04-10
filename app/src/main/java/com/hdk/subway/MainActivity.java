@@ -37,7 +37,7 @@ import java.io.IOException;
 public class MainActivity extends AppCompatActivity {
 
 
-
+    boolean click = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         //페이지 슬라이딩 이벤트가 발생했을때 애니메이션이 시작 됐는지 종료 됐는지 감지할 수 있다.
         SlidingPageAnimationListener animListener = new SlidingPageAnimationListener();
 
-        tranlateinAnim.setAnimationListener(animListener);
+//        tranlateinAnim.setAnimationListener(animListener);
         tranlateoutAnim.setAnimationListener(animListener);
 
 //        //페이지 슬라이딩 이벤트가 발생했을때 애니메이션이 시작 됐는지 종료 됐는지 감지할 수 있다.
@@ -65,16 +65,16 @@ public class MainActivity extends AppCompatActivity {
 //        tranlateLeftAnim.setAnimationListener(animListener);
 //        tranlateRightAnim.setAnimationListener(animListener);
 
-        ExtendedFloatingActionButton fab = findViewById(R.id.fab);
+//        ExtendedFloatingActionButton fab = findViewById(R.id.fab);
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, SearchActivity.class);
-                startActivity(i);
-                overridePendingTransition(R.anim.right_in, R.anim.left_out);
-            }
-        });
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(MainActivity.this, SearchActivity.class);
+//                startActivity(i);
+//                overridePendingTransition(R.anim.right_in, R.anim.left_out);
+//            }
+//        });
 
         SubsamplingScaleImageView imageView = (SubsamplingScaleImageView)findViewById(R.id.imageView);
         imageView.setImage(ImageSource.resource(R.drawable.subwayway));
@@ -177,15 +177,21 @@ public class MainActivity extends AppCompatActivity {
                                         .withInterruptible(false)
                                         .start();
 
+                                // 선택한 역명 애니메이션 작업
                                 tv.setText(c.getString(1));
+                                li.setVisibility(View.VISIBLE);
                                 li.startAnimation(tranlateinAnim);
+                                click = true;
 
-                                Toast.makeText(MainActivity.this, targetStation, Toast.LENGTH_SHORT).show();
-                            } // send Station Name (column 1)
+
+//                                Toast.makeText(MainActivity.this, targetStation, Toast.LENGTH_SHORT).show();
+                                // send Station Name (column 1)
+                            }
 
                         } while (c.moveToNext());
 
                     }
+
 
                     /////////////////////////////////////////////////////////////////////////////
                 }
@@ -202,8 +208,10 @@ public class MainActivity extends AppCompatActivity {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_MOVE:
                         findViewById(R.id.clickFragment).setVisibility(View.INVISIBLE);
-                        li.startAnimation(tranlateoutAnim);
-                        Log.i("test", "test");
+                        if(click == true){
+                            li.startAnimation(tranlateoutAnim);
+                            click = false;
+                        }
 
                         break;
                 }
@@ -216,7 +224,11 @@ public class MainActivity extends AppCompatActivity {
 
     }// onCreate...
 
+
     private class SlidingPageAnimationListener implements Animation.AnimationListener{
+
+        LinearLayout li = findViewById(R.id.li);
+
         @Override
         public void onAnimationStart(Animation animation) {
 
@@ -232,7 +244,10 @@ public class MainActivity extends AppCompatActivity {
 //                button.setText("닫기");
 //                isPageOpen = true;
 //            }
+            li.setVisibility(View.INVISIBLE);
+
         }
+
 
         @Override
         public void onAnimationRepeat(Animation animation) {
@@ -240,7 +255,5 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    void search(){
 
-    }
 }

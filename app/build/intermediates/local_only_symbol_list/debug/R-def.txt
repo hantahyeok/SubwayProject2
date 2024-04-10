@@ -35,7 +35,6 @@ id click
 id clickFragment
 id clock
 id et
-id fab
 id finish1
 id finish2
 id imageView
